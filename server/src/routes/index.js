@@ -1,7 +1,10 @@
-// const { Router } = require("express");
-// const routes = require("./routes");
-// const mainRouter = Router();
+const { Router } = require("express");
+const mainRouter = Router();
 
-// mainRouter.use("/", routes);
+const staffRouter = require('./StaffRouter');
+const sectorRouter = require('./sectorRouter');
 
-// module.exports = mainRouter;
+mainRouter.use("/staff", staffRouter);
+mainRouter.use("/sector", sectorRouter);
+
+module.exports = mainRouter;

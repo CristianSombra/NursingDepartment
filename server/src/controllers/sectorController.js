@@ -1,6 +1,6 @@
 const { Agents, Sector } = require ('../db');
 
-const getAllAgents = async (req, res) => {
+const getAllSector = async (req, res) => {
     try {
         const agents = await Agents.findAll()
         return agents;
@@ -9,11 +9,9 @@ const getAllAgents = async (req, res) => {
     }
 };
 
-const createAgent = async (id, image, name) => {
+const createSector = async (name) => {
     try {
-        const newAgent = await Agents.create({
-            id,
-            image,
+        const newAgent = await Sector.create({
             name,
             createdInDb,
         });
@@ -24,6 +22,6 @@ const createAgent = async (id, image, name) => {
 };
 
 module.exports = {
-    getAllAgents,
-    createAgent
+    getAllSector,
+    createSector
 };
