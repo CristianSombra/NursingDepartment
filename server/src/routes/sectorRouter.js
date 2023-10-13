@@ -4,3 +4,5 @@ const sectorRouter = Router();
 
 sectorRouter.get('/', getAllSectors);
 sectorRouter.post('/', createSector)
+
+module.exports = sectorRouter;

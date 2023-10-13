@@ -1,8 +1,13 @@
 const { Agents, Sector } = require ('../db');
 
-const getAllSector = async (req, res) => {
+const getAllSectors = async (req, res) => {
     try {
-        const agents = await Agents.findAll()
+        const agents = await Agents.findAll({
+            include: {
+                model: Agents,
+                through: { attributes: []}
+            }
+        });
         return agents;
     } catch (error) {
         throw new Error('Server error, could not get de agents')
@@ -11,17 +16,17 @@ const getAllSector = async (req, res) => {
 
 const createSector = async (name) => {
     try {
-        const newAgent = await Sector.create({
+        const newSector = await Sector.create({
             name,
             createdInDb,
         });
-        return newAgent;
+        return newSector;
     } catch (error) {
-        throw new Error('Error creating agent: ' + error.messsage);
+        throw new Error('Error creating Sector');
     }
 };
 
 module.exports = {
-    getAllSector,
+    getAllSectors,
     createSector
 };
