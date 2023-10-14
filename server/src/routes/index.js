@@ -2,11 +2,11 @@ const { Router } = require("express");
 const mainRouter = Router();
 
 
-const staffRouter = require('./StaffRouter');
+const agentsRouter = require('./agentsRouter');
 const sectorRouter = require('./sectorRouter');
 
 
-mainRouter.use("/staff", staffRouter);
+mainRouter.use("/agents", agentsRouter);
 mainRouter.use("/sector", sectorRouter);
 
 module.exports = mainRouter;
