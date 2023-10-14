@@ -1,25 +1,24 @@
-const staffController = require ("../controllers/staffController");
+const agentsController = require ("../controllers/agentsController");
 
 
 module.exports = {
 
 getAllAgents: async (req, res) => {
     try {
-        const allStaff = await staffController.getAllAgents();
-        res.status(200).send(allStaff)
+        const allAgents = await agentsController.getAllAgents();
+        res.status(200).send(allAgents)
     } catch (error) {
         res.status(400).json({error: error.message});
     };
 },
 
 createAgent: async (req, res) => {
-    const { id, image, name} = req.body;
+    const agentData = req.body.agentData;
     try {
-        const newAgent = await staffController.createAgent(id, image, name);
+        const newAgent = await agentsController.createAgent(agentData);
         res.status(200).json(newAgent)
     } catch (error) {
         res.status(400).json({error:error.message})
     }
 }
-
 };

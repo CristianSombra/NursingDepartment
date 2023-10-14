@@ -14,17 +14,17 @@ const getAllAgents = async (req, res) => {
     }
 };
 
-const createAgent = async (id, image, name) => {
+const createAgent = async (agentData) => {
     try {
+        console.log(agentData);
         const newAgent = await Agents.create({
-            id,
-            image,
-            name,
-            createdInDb,
+            ...agentData,
+            createdInDb: true
         });
         return newAgent;
     } catch (error) {
-        throw new Error('Error creating agent: ' + error.messsage);
+        console.error(error);
+        throw new Error('Error creating agent: ' + error.message);
     }
 };
 

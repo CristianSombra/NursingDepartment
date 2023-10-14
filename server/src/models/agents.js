@@ -22,11 +22,11 @@ module.exports = (sequelize) => {
                 allowNull: false,
                 defaultValue: 'X'
               },
-              birthday: {
+            birthday: {
                 type: DataTypes.DATE,
                 allowNull: false
               },
-              email: {
+            email: {
                 type: DataTypes.STRING,
                 allowNull: false,
                 unique: true,
@@ -34,35 +34,35 @@ module.exports = (sequelize) => {
                   isEmail: true,
                 },
               },
-              phone: {
+            phone: {
                 type: DataTypes.STRING,
-                allowNull: true
+                allowNull: false
               }, 
-              address: {
+            address: {
                 type: DataTypes.STRING,
                 allowNull: false
               },
-              dateAdmission: {
+            dateAdmission: {
                 type: DataTypes.DATE,
                 allowNull: false
               },
-              academicLevel: {
+            academicLevel: {
                 type: DataTypes.ENUM('Auxiliar', 'Técnico Superior en Enfermería', 'Enfermero Profesional', 'Enfermero Universitario', 'Licenciado en Enfermería'), 
                 allowNull: false,
               },
-              state: {
+            state: {
                 type: DataTypes.ENUM('Contratado', 'Planta'), 
                 allowNull: false,
               },  
-              position: {
+            position: {
                 type: DataTypes.ENUM('Piso', 'Jefe de área', 'Supervisor de turno', 'Jefe de departamento', 'Director'), 
                 allowNull: false,
              },
-             hourlyday: {
+            time: {
               type: DataTypes.ENUM('00-06','06-12','12-18','18-00','00-08','08-16','16-00'), 
               allowNull: false,
               },      
-              createdInDb: {
+            createdInDb: {
                 type: DataTypes.BOOLEAN,
                 allowNull: false,
                 defaultValue: true,
