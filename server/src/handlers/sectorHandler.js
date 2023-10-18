@@ -6,16 +6,18 @@ module.exports = {
 getAllSectors: async (req, res) => {
     try {
         const allSectors = await sectorController.getAllSectors();
-        res.status(200).send(allSectors)
+        res.status(200).json(allSectors)
     } catch (error) {
         res.status(400).json({error: error.message});
     };
 },
 
 createSector: async (req, res) => {
-    const { name } = req.body;
+    const { id_sector, name, state } = req.body;
     try {
-        const newSector  = await sectorController.createSector(name);
+        console.log('Antes de crear el sector:', id_sector, name, state);
+        const newSector  = await sectorController.createSector(id_sector, name, state);
+        console.log('Después de crear el sector:', newSector);
         res.status(200).json(newSector)
     } catch (error) {
         res.status(400).json({error:error.message})
