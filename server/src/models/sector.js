@@ -9,6 +9,10 @@ module.exports = (sequelize) => {
             primaryKey: true,
             autoIncrement: true
             },
+          id_sector: {
+            type: DataTypes.STRING,
+            allowNull: false,
+          },
           name: {
             type: DataTypes.STRING,
             allowNull: false,

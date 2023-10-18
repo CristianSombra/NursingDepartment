@@ -1,24 +1,20 @@
 const { Agents, Sector } = require ('../db');
 
-const getAllSectors = async (req, res) => {
+const getAllSectors = async () => {
     try {
-        const agents = await Agents.findAll({
-            include: {
-                model: Agents,
-                through: { attributes: []}
-            }
-        });
-        return agents;
+        const sectors = await Sector.findAll();
+        return sectors;
     } catch (error) {
-        throw new Error('Server error, could not get de agents')
+        throw new Error('Server error, could not get the sectors');
     }
 };
 
-const createSector = async (name) => {
+const createSector = async (id_sector, name, state) => {
     try {
         const newSector = await Sector.create({
+            id_sector, 
             name,
-            createdInDb,
+            state,
         });
         return newSector;
     } catch (error) {

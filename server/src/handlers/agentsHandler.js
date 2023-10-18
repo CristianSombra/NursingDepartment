@@ -6,7 +6,7 @@ module.exports = {
 getAllAgents: async (req, res) => {
     try {
         const allAgents = await agentsController.getAllAgents();
-        res.status(200).send(allAgents)
+        res.status(200).json(allAgents)
     } catch (error) {
         res.status(400).json({error: error.message});
     };
