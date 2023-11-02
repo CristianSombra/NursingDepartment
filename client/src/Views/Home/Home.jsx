@@ -1,8 +1,8 @@
 
 
-function Home () {
+const  Home = () => {
     return (
-        <h1>Ésta es la view de Home</h1>
+        <h1>Ésta es la view de Home Prueba 2</h1>
     )
 }
 
