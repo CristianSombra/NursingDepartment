@@ -1,1 +1,1 @@
-SELECT * FROM "Agents";
+SELECT * FROM "Sectors";
