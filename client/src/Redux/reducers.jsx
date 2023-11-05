@@ -1,4 +1,4 @@
-import { GET_ALL_AGENTS, GET_ALL_SECTORS } from "./actions";
+import { ERROR, GET_ALL_AGENTS, GET_ALL_SECTORS } from "./actions";
 
 const initialstate = {
     agents: [],
