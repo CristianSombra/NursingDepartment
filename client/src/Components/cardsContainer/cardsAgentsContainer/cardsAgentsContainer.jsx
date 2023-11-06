@@ -5,7 +5,7 @@ import {useDispatch, useSelector} from "react-redux";
 
 const CardsAgentsContainer = () => {
     const agents = useSelector((state) => state.agents);
-    const dispatch = useDispatch;
+    const dispatch = useDispatch();
 
 useEffect(()=> {
     dispatch(allAgents())
@@ -15,8 +15,8 @@ useEffect(()=> {
 return(
     <div class="container">
         <div class="row">
-            {agents.map((agent) => (
-            <div key={agents.id}>
+            {agents?.map((agent) => (
+            <div key={agent.id}>
                 <CardAgents
                     key={agent.id}
                     id={agent.id}
@@ -31,6 +31,8 @@ return(
                     state={agent.state}
                     position={agent.position}
                     time={agent.time}
+                    sectorId={agent.sectorId}
+                    sector={agent.Sector}
                     />
             </div>
             ))}
