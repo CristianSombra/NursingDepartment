@@ -1,0 +1,19 @@
+Dirección - DIR
+Supervisión - SUP
+Jefatura - JEF
+Infectología - INF
+Vacunas - VAC
+Consultorios Externos - CE
+Oncología - ONCO
+Hemodiálisis - HEMO
+Guardia Central - GC
+Clínica Médica - CM
+Cirugía - CX
+Maternidad - MATER
+Partos - PAR
+Neonatología - NEO
+Pediatría - PED
+UNIDAD DE TERAPIA INTENSIVA ADULTOS - UTIA
+UNIDAD DE TERAPIA INTENSIVA PEDIATRICOS - UTIP
+UNIDAD CORONARIA - UCO
+RESIDENCIA ADULTO MAYOR - RAM

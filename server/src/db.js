@@ -22,6 +22,7 @@ const {
 Agents.belongsTo(Sector, { foreignKey: 'sectorId' });
 
 
+
 module.exports = {
     sequelize, ...sequelize.models
 };
