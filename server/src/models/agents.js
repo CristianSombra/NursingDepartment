@@ -57,7 +57,7 @@ module.exports = (sequelize) => {
             position: {
                 type: DataTypes.ENUM('Piso', 'Jefe de área', 'Supervisor de turno', 'Jefe de departamento', 'Director'), 
                 allowNull: false,
-             },
+            },
             time: {
               type: DataTypes.ENUM('00-06','06-12','12-18','18-00','00-08','08-16','16-00'), 
               allowNull: false,

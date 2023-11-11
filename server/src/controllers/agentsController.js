@@ -22,14 +22,14 @@ const createAgent = async (agentData) => {
 
          // Encuentra el sector correspondiente por su id_sector
         const sector = await Sector.findOne({
-         where: {
+        where: {
             id_sector: agentData.id_sector
-              }
+            }
         });
         
          // Asocia el agente con el sector
-       if (sector) {
-       await newAgent.setSector(sector);
+    if (sector) {
+    await newAgent.setSector(sector);
     }
     
     return newAgent;
