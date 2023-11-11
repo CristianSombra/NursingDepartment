@@ -14,15 +14,18 @@ AgentsModel(sequelize);
 SectorModel(sequelize);
 
 const {
-    Agents, 
-    Sector,
+  Agents,
+  Sector,
 } = sequelize.models;
 
-
+// Relación muchos a uno (un agente pertenece a un sector)
 Agents.belongsTo(Sector, { foreignKey: 'sectorId' });
 
-
+// Relación muchos a muchos (un sector puede tener varios agentes, y un agente puede pertenecer a varios sectores)
+Sector.belongsToMany(Agents, { through: 'SectorAgents', foreignKey: 'sectorId', as: 'Agents' });
+Agents.belongsToMany(Sector, { through: 'SectorAgents', foreignKey: 'agentId', as: 'Sectors' });
 
 module.exports = {
-    sequelize, ...sequelize.models
+  sequelize,
+  ...sequelize.models
 };

@@ -20,6 +20,7 @@ return(
                 <CardAgents
                     key={agent.id}
                     id={agent.id}
+                    image={agent.image}
                     name={agent.name}
                     gender={agent.gender}
                     birthday={agent.birthday}
