@@ -9,5 +9,6 @@
             "database": "nursingstaff",
             "username": "postgres"
         }
-    ]
+    ],
+    "liveServer.settings.port": 5502
 }

@@ -2,7 +2,8 @@ import React from "react";
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { Landing, Home } from './Views/index';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js'; 
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+
 
 function App() {
   const location = useLocation();
@@ -12,7 +13,7 @@ function App() {
   },[location]);
 
   return (
-    <div class="container">
+    <div class="container-fluid">
         {/* {location.pathname !== "/" && <NavBar />} */}
         <Routes>
             <Route exact path="/" element={<Landing />} />
