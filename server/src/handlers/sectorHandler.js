@@ -15,9 +15,7 @@ getAllSectors: async (req, res) => {
 createSector: async (req, res) => {
     const { id_sector, name, state } = req.body;
     try {
-        console.log('Antes de crear el sector:', id_sector, name, state);
         const newSector  = await sectorController.createSector(id_sector, name, state);
-        console.log('Después de crear el sector:', newSector);
         res.status(200).json(newSector)
     } catch (error) {
         res.status(400).json({error:error.message})
