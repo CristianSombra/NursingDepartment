@@ -1,0 +1,18 @@
+{
+    "agentData": {
+        "id": 569,
+        "image": "",
+        "name": "José Bordón",
+        "gender": "M",
+        "birthday": "09/03/1981",
+        "email": "jrbordon1981@gmail.com",
+        "phone": "2964520501",
+        "address": "Dirección del agente",
+        "dateAdmission": "2012-02-12",
+        "academicLevel": "Licenciado en enfermería",
+        "state": "Planta",
+        "position": "Jefe de departamento",
+        "time": "08-16",
+	"id_sector": "SUP"
+    }
+}

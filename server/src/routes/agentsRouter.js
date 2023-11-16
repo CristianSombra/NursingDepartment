@@ -4,6 +4,6 @@ const agentsRouter = Router();
 
 
 agentsRouter.get('/', getAllAgents);
-agentsRouter.post('/', createAgent);
+agentsRouter.post('/newagent', createAgent);
 
 module.exports = agentsRouter;
