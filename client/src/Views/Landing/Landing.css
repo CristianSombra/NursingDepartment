@@ -1,6 +1,35 @@
-.background{
-    background: rgba(0,0,0,0.5) url(../../assets//background.png) center no-repeat;
-    background-size: cover;
-    background-blend-mode: overlay;
+.container-fluid {
     animation: popup 2s;
+    height: 100vh; /* Agregado para ocupar toda la altura de la pantalla */
 }
+
+.container-intro{
+    animation: blur 2s;
+}
+
+.button{
+    font-size: l;
+}
+
+/* Animación */
+
+@keyframes blur {
+    0% {
+    filter: blur(12px);
+    }
+    100% {
+    filter: blur(0px);
+    }
+}
+
+@keyframes popup {
+    0% {
+    transform: scale(1.2);
+    opacity: 0;
+}
+    100% {
+    transform: scale(1);
+    opacity: 1;
+    }
+}
+
