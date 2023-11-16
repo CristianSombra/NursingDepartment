@@ -1,0 +1,6 @@
+.background{
+    background: rgba(0,0,0,0.5) url(../../assets//background.png) center no-repeat;
+    background-size: cover;
+    background-blend-mode: overlay;
+    animation: popup 2s;
+}
