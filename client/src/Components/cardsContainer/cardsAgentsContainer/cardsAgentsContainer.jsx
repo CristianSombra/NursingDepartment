@@ -16,7 +16,7 @@ return(
     <div class="container">
         <div class="row">
             {agents?.map((agent) => (
-            <div key={agent.id}>
+            <div key={agent.id} className="col-12 col-md-6">
                 <CardAgents
                     key={agent.id}
                     id={agent.id}

@@ -1,16 +1,70 @@
 .container-fluid {
-    animation: popup 2s;
-    height: 100vh; /* Agregado para ocupar toda la altura de la pantalla */
+    animation: popup 1s;
+    height: 100vh;
 }
 
 .container-intro{
-    animation: blur 2s;
+    animation: blur 1s;
 }
 
-.button{
-    font-size: l;
+.btn-1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-decoration: none;
+    animation: popup 2.5s;
+    animation: blur 1s;
 }
 
+.btn-1 a {
+    text-decoration: none;
+    border: 2px solid #010100;
+    padding: 15px;
+    color: #000;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    display: inline-block;
+}
+
+span{
+    position: relative;
+    z-index: 3;
+}
+
+.btn-1 a::after {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: -2px;
+    width: calc(100% + 6px);
+    height: calc(100% - 10px);
+    background-color: #ffffff;
+    transition: all 0.5s ease-in-out;
+    transform: scaleY(1);
+    }
+    
+    .btn-1 a:hover::after {
+    transform: scaleY(0);
+}
+
+    .btn-1 a::before {
+        content: "";
+        position: absolute;
+        left: 5px;
+        top: -5px;
+        width: calc(100% - 10px);
+        height: calc(100% + 10px);
+        background-color: #ffffff;
+        transition: all 0.5s ease-in-out;
+        transform: scaleX(1);
+    }
+
+        .btn-1 a:hover::before {
+        transform: scaleX(0);
+    }
+    
 /* Animación */
 
 @keyframes blur {
