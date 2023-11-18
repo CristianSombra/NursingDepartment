@@ -3,6 +3,8 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import { Landing, Home } from './Views/index';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import 'bootstrap-icons/font/bootstrap-icons.css';
+import NavBar from "./Components/navbar/navbar";
 
 
 function App() {
@@ -14,7 +16,7 @@ function App() {
 
   return (
     <div class="container-fluid">
-        {/* {location.pathname !== "/" && <NavBar />} */}
+        {location.pathname !== "/" && <NavBar />}
         <Routes>
             <Route exact path="/" element={<Landing />} />
             <Route path="/Home" element={<Home />} />
