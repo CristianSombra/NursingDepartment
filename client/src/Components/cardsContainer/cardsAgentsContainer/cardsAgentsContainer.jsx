@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import CardAgents from '../../card/cardAgents/cardAgents';
 import { allAgents } from "../../../Redux/actions";
 import {useDispatch, useSelector} from "react-redux";
