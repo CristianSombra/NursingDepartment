@@ -10,8 +10,10 @@ const CardAgents = (props) => {
             <div class="row my-3 justify-content-center">
                 <div class="col">
                     <div class="card">
-                        <img class="card-img-top" src={image} alt="agente"/>    
-                        <div class="card-body">    
+                        <div class="imageContainer">
+                            <img class="card-img-top img-fluid rounded" src={image} alt="agente"/>    
+                        </div>
+                        <div class="card-body text-center">    
                             <h4>Matrícula: {id}</h4>
                             <h5 class="text-muted">Nombre y apellido: {name}</h5>
                             <h5 class="text-muted">Rango: {position}</h5>

@@ -1,11 +1,22 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Link} from 'react-router-dom'
 import fondo from '../../assets/background.jpg'
 import './Landing.css'
 
 const Landing = () => {
+    useEffect(() => {
+        // Ocultar barras de desplazamiento al cargar la página
+        document.body.style.overflow = 'hidden';
+    
+        // Restaurar barras de desplazamiento al desmontar el componente
+        return () => {
+        document.body.style.overflow = 'visible';
+        };
+    }, []);
+
+
     return (
-        <div class="container-fluid">
+        <div class="container-fluid container-fluid-landing">
         <div class="container-intro d-flex align-items-center justify-content-center" style={{ minHeight: '100vh' }}>
             <div class="row">
                 <div className="col">

@@ -18,3 +18,8 @@
 }
 
 
+{
+    "id_sector": "JEF",
+    "name": "Dirección",
+    "state": "Area abierta"
+}
