@@ -26,7 +26,7 @@ const Landing = () => {
                     <h2 class="subtitle text-muted">Base de datos del personal</h2>
                         
                         <Link to="/home" class="my-5 btn-1">
-                            <a href=""><span>Ingresar</span></a>
+                            <button><span>Ingresar</span></button>
                         </Link>
                         </div>
                 </div>
