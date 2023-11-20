@@ -17,7 +17,7 @@
     animation: blur 1s;
 }
 
-.btn-1 a {
+.btn-1 button {
     text-decoration: none;
     border: 2px solid #010100;
     padding: 15px;
@@ -33,7 +33,7 @@ span{
     z-index: 3;
 }
 
-.btn-1 a::after {
+.btn-1 button::after {
     content: "";
     position: absolute;
     top: 5px;
@@ -45,11 +45,11 @@ span{
     transform: scaleY(1);
     }
     
-    .btn-1 a:hover::after {
+    .btn-1 button:hover::after {
     transform: scaleY(0);
 }
 
-    .btn-1 a::before {
+    .btn-1 button::before {
         content: "";
         position: absolute;
         left: 5px;
@@ -61,7 +61,7 @@ span{
         transform: scaleX(1);
     }
 
-        .btn-1 a:hover::before {
+        .btn-1 button:hover::before {
         transform: scaleX(0);
     }
     
