@@ -23,18 +23,20 @@ function NavBar () {
                 <a class="nav-link dropdown-toggle" href="Agentes" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Agentes
                 </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <ul class="dropdown-menu shadow-lg p-3 mb-5 bg-body rounded" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item" href="Planta">Planta</a></li>
                     <li><a class="dropdown-item" href="Contratados">Contratados</a></li>
+                    <li><a class="dropdown-item" href="Agents">Todos los agentes</a></li>
                 </ul>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="Sectores" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Sectores
                 </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <ul class="dropdown-menu shadow-lg p-3 mb-5 bg-body rounded" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item" href="Área abierta">Área abierta</a></li>
                     <li><a class="dropdown-item" href="Área Cerrada">Área cerrada</a></li>
+                    <li><a class="dropdown-item" href="Sectors">Todos los sectores</a></li>
                 </ul>
             </li>
         </ul>

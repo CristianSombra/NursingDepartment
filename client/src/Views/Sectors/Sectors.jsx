@@ -11,7 +11,6 @@ const  Sectors = () => {
                     <div className="my-5 text-center">
                         <h2>Todos los sectores</h2>
                     </div>
-                        <h2>Aquí están los sectores</h2>
                         <CardsSectorsContainer/>
                     </div>
                 </div>
