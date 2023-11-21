@@ -13,7 +13,7 @@ const  Home = () => {
                         <img src={agents} alt="" className="img-card-top rounded" />
                         <div className="card-body text-center">
                         <h4 class="card-title">Agentes</h4>
-                        <a href="agents" class="btn btn-outline-dark">Ingresar</a>
+                        <a href="Agents" class="btn btn-outline-dark">Ingresar</a>
                         </div>
                     </div>
                 </div>
@@ -22,7 +22,7 @@ const  Home = () => {
                         <img src={sectors} alt="" className="img-card-top rounded" />
                         <div className="card-body text-center">
                         <h4 class="card-title">Servicios</h4>
-                        <a href="Servicios" class="btn btn-outline-dark">Ingresar</a>
+                        <a href="Sectors" class="btn btn-outline-dark">Ingresar</a>
                         </div>
                     </div>
                 </div>
