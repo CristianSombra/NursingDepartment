@@ -17,7 +17,7 @@ function NavBar () {
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="Inicio">Inicio</a>
+            <a class="nav-link active" aria-current="page" href="home">Inicio</a>
         </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="Agentes" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -33,7 +33,7 @@ function NavBar () {
                 Sectores
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="Área abierta">Área abieta</a></li>
+                    <li><a class="dropdown-item" href="Área abierta">Área abierta</a></li>
                     <li><a class="dropdown-item" href="Área Cerrada">Área cerrada</a></li>
                 </ul>
             </li>

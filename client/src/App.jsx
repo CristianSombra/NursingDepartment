@@ -1,10 +1,11 @@
 import React from "react";
 import { Routes, Route, useLocation } from 'react-router-dom';
-import { Landing, Home } from './Views/index';
+import { Landing, Home, Agents } from './Views/index';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import NavBar from "./Components/navbar/navbar";
+import Footer from "./Components/footer/footer";
 
 
 function App() {
@@ -15,12 +16,16 @@ function App() {
   },[location]);
 
   return (
-    <div class="container-fluid">
-        {location.pathname !== "/" && <NavBar />}
+    <div className="container-fluid d-flex flex-column min-vh-100">
+      {location.pathname !== "/" && <NavBar />}
+      <div className="row flex-grow-1">
         <Routes>
-            <Route exact path="/" element={<Landing />} />
-            <Route path="/Home" element={<Home />} />
+          <Route exact path="/" element={<Landing />} />
+          <Route path="/Home" element={<Home />} />
+          <Route path="/Agents"  element={<Agents />} />
         </Routes>
+      </div>
+      <Footer />
     </div>
   );
 }
