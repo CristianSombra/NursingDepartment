@@ -9,10 +9,11 @@ const getAllSectors = async () => {
     }
 };
 
-const createSector = async (id_sector, name, state) => {
+const createSector = async (id_sector, image, name, state) => {
     try {
         const newSector = await Sector.create({
-            id_sector, 
+            id_sector,
+            image, 
             name,
             state,
         });
