@@ -20,6 +20,7 @@
 .btn-1 button {
     text-decoration: none;
     border: 2px solid #010100;
+    border-radius: 5px;
     padding: 15px;
     color: #000;
     text-transform: uppercase;
@@ -40,7 +41,7 @@ span{
     left: -2px;
     width: calc(100% + 6px);
     height: calc(100% - 10px);
-    background-color: #ffffff;
+    background-color: white;
     transition: all 0.5s ease-in-out;
     transform: scaleY(1);
     }
