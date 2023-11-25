@@ -1,6 +1,6 @@
 import React from "react";
 import { Routes, Route, useLocation } from 'react-router-dom';
-import { Landing, Home, Agents, Sectors } from './Views/index';
+import { Landing, Home, Protocols, Agents, Sectors } from './Views/index';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import 'bootstrap-icons/font/bootstrap-icons.css';
@@ -22,6 +22,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Landing />} />
           <Route path="/Home" element={<Home />} />
+          <Route path="/Protocols" element={<Protocols />} />
           <Route path="/Agents"  element={<Agents />} />
           <Route path="/Sectors"  element={<Sectors />} />
         </Routes>

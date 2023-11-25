@@ -19,6 +19,9 @@ function NavBar () {
         <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="home">Inicio</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="protocols">Protocolos</a>
+        </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="Agentes" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Agentes
@@ -41,8 +44,10 @@ function NavBar () {
             </li>
         </ul>
         <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-            <button class="btn btn-outline-dark" type="submit">Search</button>
+            <input class="form-control me-2" type="search" placeholder="Buscar agente" aria-label="Search" />
+            <button class="btn btn-outline-dark" type="submit">
+                <i class="bi bi-search"></i>
+            </button>
         </form>
     </div>
     </div>
