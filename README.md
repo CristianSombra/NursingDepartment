@@ -2,7 +2,7 @@
 
 ### ¿Para qué es? 😎
 
-Es una SPA responsiva, en el que se puede cargar profesionales nuevos, servicios nuevos así como también poder relacionarlos. La finalidad es que el Departamento de Enfermería tenga a disposición toda la inforamción vital de los agentes que tiene y en qué servicios pertenecen.
+Es una SPA responsiva, en el que se puede cargar profesionales nuevos, servicios nuevos así como también poder relacionarlos. La finalidad es que el Departamento de Enfermería tenga a disposición toda la información vital de los agentes que tiene y en qué servicios pertenecen.
 
 
 
