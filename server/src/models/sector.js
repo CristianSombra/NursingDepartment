@@ -22,7 +22,7 @@ module.exports = (sequelize) => {
             allowNull: false,
             },
           state: {
-            type: DataTypes.ENUM('Area cerrada', 'Area abierta'), 
+            type: DataTypes.ENUM('Área cerrada', 'Área abierta'), 
             allowNull: false,
             }            
             },
