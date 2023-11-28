@@ -25,9 +25,9 @@ const Landing = () => {
                             <h1 class="title text-black">Departamento de Enfermería</h1>
                             <h2 class="subtitle text-muted">Base de datos del personal</h2>
                             <Link to="/home" class="my-5 btn-1">
-                                <button class="custom-button hover">
+                                <div class="custom-button hover">
                                     <span>Ingresar</span>
-                                </button>
+                                </div>
                             </Link>
                         </div>
                     </div>
