@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "react-router-dom";
 import logonav from "../../assets/logonav.png";
 
 
@@ -17,10 +18,10 @@ function NavBar () {
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="home">Inicio</a>
+            <Link to="/home" class="nav-link active" aria-current="page">Inicio</Link>
         </li>
         <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="protocols">Protocolos</a>
+            <Link to="/protocols" class="nav-link active" aria-current="page">Protocolos</Link>
         </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="Agentes" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
