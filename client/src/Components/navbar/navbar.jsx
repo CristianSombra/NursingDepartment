@@ -43,6 +43,15 @@ function NavBar () {
                     <li><a class="dropdown-item" href="Sectors">Todos los sectores</a></li>
                 </ul>
             </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="Sectores" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Crear
+                </a>
+                <ul class="dropdown-menu shadow-lg p-3 mb-5 bg-body rounded" aria-labelledby="navbarDropdown">
+                    <li><Link to="/formsector" class="nav-link active" aria-current="page">Nuevo sector</Link></li>
+                    <li><Link to="/formagent" class="nav-link active" aria-current="page">Nuevo agente</Link></li>
+                </ul>
+            </li>
         </ul>
         <form class="d-flex">
             <input class="form-control me-2" type="search" placeholder="Buscar agente" aria-label="Search" />
