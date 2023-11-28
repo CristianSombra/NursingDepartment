@@ -21,10 +21,10 @@ function App() {
       <div className="row flex-grow-1">
         <Routes>
           <Route exact path="/" element={<Landing />} />
-          <Route path="/Home" element={<Home />} />
-          <Route path="/Protocols" element={<Protocols />} />
-          <Route path="/Agents"  element={<Agents />} />
-          <Route path="/Sectors"  element={<Sectors />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/protocols" element={<Protocols />} />
+          <Route path="/agents"  element={<Agents />} />
+          <Route path="/sectors"  element={<Sectors />} />
         </Routes>
       </div>
       <Footer />
