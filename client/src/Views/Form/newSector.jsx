@@ -92,36 +92,36 @@ const NewSector = () => {
                                 </div>
                         
                                 <div className="mb-3">
-    <label htmlFor="tipo de área" className="form-label">
-        Tipo de área
-    </label>
-    <div className="form-check">
-        <input
-            type="radio"
-            className="form-check-input"
-            name="tipo de área"
-            id="área abierta"
-            onChange={() => handleAreaChange('Área abierta')}
-            checked={sector.state === 'Área abierta'}
-        />
-        <label htmlFor="área abierta" className="form-check-label">
-            Área abierta
-        </label>
-    </div>
-    <div className="form-check">
-        <input
-            type="radio"
-            className="form-check-input"
-            name="tipo de área"
-            id="área cerrada"
-            onChange={() => handleAreaChange('Área cerrada')}
-            checked={sector.state === 'Área cerrada'}
-        />
-        <label htmlFor="área cerrada" className="form-check-label">
-            Área cerrada
-        </label>
-    </div>
-</div>
+                                    <label htmlFor="tipo de área" className="form-label">
+                                        Tipo de área
+                                    </label>
+                                    <div className="form-check">
+                                        <input
+                                            type="radio"
+                                            className="form-check-input"
+                                            name="tipo de área"
+                                            id="área abierta"
+                                            onChange={() => handleAreaChange('Área abierta')}
+                                            checked={sector.state === 'Área abierta'}
+                                        />
+                                        <label htmlFor="área abierta" className="form-check-label">
+                                            Área abierta
+                                        </label>
+                                    </div>
+                                    <div className="form-check">
+                                        <input
+                                            type="radio"
+                                            className="form-check-input"
+                                            name="tipo de área"
+                                            id="área cerrada"
+                                            onChange={() => handleAreaChange('Área cerrada')}
+                                            checked={sector.state === 'Área cerrada'}
+                                        />
+                                        <label htmlFor="área cerrada" className="form-check-label">
+                                            Área cerrada
+                                        </label>
+                                    </div>
+                                </div>
                             </div>  
                         </div>
                             <div className="mt-3 text-center">
