@@ -3,6 +3,7 @@ import axios from "axios";
 export const ERROR = 'ERROR';
 export const GET_ALL_AGENTS = 'GET_ALL_AGENTS';
 export const GET_ALL_SECTORS = 'GET_ALL_SECTORS';
+export const CREATE_NEWSECTOR = 'CREATE_NEWSECTOR';
 
 
 export const allAgents = () => {
@@ -36,3 +37,17 @@ export const allSectors = () => {
         return errorMessage;
     };
 };
+
+export const createSector = (payload) => {
+    return async function(dispatch) {
+        let errorMessage = '';
+        try {
+            await axios.post('http://localhost:3001/sector/newsector', payload)
+            dispatch({type: CREATE_NEWSECTOR })
+        } catch (error) {
+            const errorMessage = 'Error al crear el sector'
+            dispatch({type: ERROR, payload: errorMessage})
+        }
+        return errorMessage;
+    }
+}

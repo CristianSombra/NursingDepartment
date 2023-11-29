@@ -1,4 +1,4 @@
-import { ERROR, GET_ALL_AGENTS, GET_ALL_SECTORS } from "./actions";
+import { ERROR, GET_ALL_AGENTS, GET_ALL_SECTORS, CREATE_NEWSECTOR } from "./actions";
 
 const initialstate = {
     agents: [],
@@ -23,6 +23,11 @@ const rootReducer = (state = initialstate, action) => {
                 ...state,
                 sectors: action.payload,
             };
+        case CREATE_NEWSECTOR:
+            return{
+                creatingSector: false,
+                createSectorError: null,
+            }
         default:
             return state
     };
