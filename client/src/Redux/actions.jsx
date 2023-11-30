@@ -4,8 +4,10 @@ export const ERROR = 'ERROR';
 export const GET_ALL_AGENTS = 'GET_ALL_AGENTS';
 export const GET_ALL_SECTORS = 'GET_ALL_SECTORS';
 export const CREATE_NEWSECTOR = 'CREATE_NEWSECTOR';
+export const CREATE_NEWAGENT = 'CREATE_NEWAGENT'
 
 
+//SECCIÓN AGENTE
 export const allAgents = () => {
     return async function(dispatch) {
         let errorMessage = '';
@@ -23,6 +25,22 @@ export const allAgents = () => {
     };
 };
 
+export const createAgent = (payload) => {
+    return async function(dispatch) {
+        let errorMessage = '';
+        try {
+            await axios.post('http://localhost:3001/agents/newagent', payload)
+            dispatch({type: CREATE_NEWAGENT })
+        } catch (error) {
+            const errorMessage = 'Error al crear el Agente'
+            dispatch({type: ERROR, payload: errorMessage})
+        }
+        return errorMessage;
+    }
+}
+
+
+//SECCIÓN SECTOR
 export const allSectors = () => {
     return async function(dispatch) {
         let errorMessage = '';

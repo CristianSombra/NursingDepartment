@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { CreateSectorHandler } from "../../Components/handlers/handlers";
 
 
@@ -49,10 +49,11 @@ const NewSector = () => {
             <div className="row mt-5 d-flex justify-content-center">
                 <div className="col-12 col-md-10">
                     <form onSubmit={handleSubmit}>
-                        <div className="row mt-5">
+                        <div className="row my-3">
+                                <h1 className="text-center mb-4">Formulario para crear nuevo sector</h1>
                             <div className="col-12 col-md-6">
                                 <div className="mb-3">
-                                    <label htmlFor="image" className="form-label">Tu Imagen:</label>
+                                    <label htmlFor="image" className="form-label">Tu imagen:</label>
                                     <input
                                         type="file"
                                         id="image"
@@ -61,17 +62,17 @@ const NewSector = () => {
                                         required
                                         className="form-control"
                                         />
-                                    {imageUrl && (
+                                        {imageUrl && (
                                         <div className="mt-3 text-center">
                                             <img src={imageUrl} alt="Preview" className="img-fluid rounded" />
                                         </div>
-                                    )}
+                                        )}
                                 </div>
                             </div>
 
                             <div className="col-12 col-md-6">
-                                <div className="mb-3">
-                                    <label for="nombre del servicio" className="form-label">Nombre del servicio</label>
+                                <div className="mb-5">
+                                    <label htmlFor="nombre del servicio" className="form-label">Nombre del servicio</label>
                                     <input 
                                         type="text" 
                                         className="form-control"
@@ -80,8 +81,8 @@ const NewSector = () => {
                                         onChange={handleChange} 
                                         placeholder="Ejemplo: Unidad de terapia intensiva pediátrica"/> 
                                 </div>
-                                <div className="mb-3">
-                                    <label for="id del servicio" className="form-label">ID del servicio</label>
+                                <div className="mb-5">
+                                    <label htmlFor="id del servicio" className="form-label">ID del servicio</label>
                                     <input 
                                         type="text" 
                                         className="form-control"
@@ -124,7 +125,7 @@ const NewSector = () => {
                                 </div>
                             </div>  
                         </div>
-                            <div className="mt-3 text-center">
+                            <div className="my-5 text-center">
                                 <button type="submit" className="btn btn-outline-dark">
                                     Crear Sector
                                 </button>
