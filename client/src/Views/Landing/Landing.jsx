@@ -1,7 +1,6 @@
 import React, {useEffect} from 'react';
 import {Link} from 'react-router-dom'
 import fondo from '../../assets/background.jpg'
-import './Landing.css'
 
 const Landing = () => {
     useEffect(() => {
@@ -16,16 +15,16 @@ const Landing = () => {
 
 
     return (
-        <div class="container-fluid container-fluid-landing">
-            <div class="container-intro d-flex align-items-center justify-content-center" style={{ minHeight: '100vh' }}>
-                <div class="row">
+        <div className="container-fluid container-fluid-landing">
+            <div className="container-intro d-flex align-items-center justify-content-center" style={{ minHeight: '100vh' }}>
+                <div className="row">
                     <div className="col">
-                        <img src={fondo} class="img-fluid" alt="fondo" />
-                        <div class="col text-center">
-                            <h1 class="title text-black">Departamento de Enfermería</h1>
-                            <h2 class="subtitle text-muted">Base de datos del personal</h2>
-                            <Link to="/home" class="my-5 btn-1">
-                                <div class="custom-button hover">
+                        <img src={fondo} className="img-fluid" alt="fondo" />
+                        <div className="col text-center">
+                            <h1 className="title text-black">Departamento de Enfermería</h1>
+                            <h2 className="subtitle text-muted mb-5">Base de datos del personal</h2>
+                            <Link to="/home" className="my-5">
+                                <div className="btn btn-outline-dark btn-lg">
                                     <span>Ingresar</span>
                                 </div>
                             </Link>
