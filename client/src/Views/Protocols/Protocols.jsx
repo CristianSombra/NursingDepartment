@@ -22,8 +22,8 @@ const Protocols = () => {
                                     <th>Protocolo de supervisión</th>
                                     <th>Lic. José Bordón</th>
                                     <th>
-                                        <a href={pdfPath + "manualsupervision.pdf"} target="_blank">
-                                            <i class="bi bi-filetype-pdf fs-4"></i>
+                                        <a href={pdfPath + "manualsupervision.pdf"} target="_blank" rel="noreferrer">
+                                            <i className="bi bi-filetype-pdf fs-4"></i>
                                         </a>
                                     </th>
                                 </tr>
@@ -31,17 +31,17 @@ const Protocols = () => {
                                     <th>Protocolo de jefatura</th>
                                     <th>Lic. José Bordón</th>
                                     <th>
-                                        <a href={pdfPath + "manualjefatura.pdf"} target="_blank">
-                                            <i class="bi bi-filetype-pdf fs-4"></i>
+                                        <a href={pdfPath + "manualjefatura.pdf"} target="_blank" rel="noreferrer">
+                                            <i className="bi bi-filetype-pdf fs-4"></i>
                                         </a>
                                     </th>
                                 </tr>
-                                <tr>
+                                {/* <tr>
                                     <th>Protocolo de infectología</th>
                                     <th>Lic. Macela Digiorgi</th>
                                     <th>
-                                        <a href="" target="">
-                                            <i class="bi bi-filetype-pdf fs-4"></i>
+                                        <a href="" target="" rel="noreferrer">
+                                            <i className="bi bi-filetype-pdf fs-4"></i>
                                         </a>
                                     </th>
                                 </tr>
@@ -50,7 +50,7 @@ const Protocols = () => {
                                     <th>Lic. Laura Flores</th>
                                     <th>
                                         <a href="" target="">
-                                            <i class="bi bi-filetype-pdf fs-4"></i>
+                                            <i className="bi bi-filetype-pdf fs-4"></i>
                                         </a>
                                     </th>
                                 </tr>
@@ -58,8 +58,8 @@ const Protocols = () => {
                                     <th>Protocolo de Consultorios Externos</th>
                                     <th>Lic. Natalia Álvarez</th>
                                     <th>
-                                        <a href="" target="">
-                                            <i class="bi bi-filetype-pdf fs-4"></i>
+                                        <a href="" target="" rel="noreferrer">
+                                            <i className="bi bi-filetype-pdf fs-4"></i>
                                         </a>
                                     </th>
                                 </tr>
@@ -68,7 +68,7 @@ const Protocols = () => {
                                     <th>Lic. Yésica Vilte</th>
                                     <th>
                                         <a href="" target="">
-                                            <i class="bi bi-filetype-pdf fs-4"></i>
+                                            <i className="bi bi-filetype-pdf fs-4"></i>
                                         </a>
                                     </th>
                                 </tr>
@@ -76,8 +76,8 @@ const Protocols = () => {
                                     <th>Protocolo de Hemodiálisis</th>
                                     <th>Lic. Horacio Chávez</th>
                                     <th>
-                                        <a href="" target="">
-                                            <i class="bi bi-filetype-pdf fs-4"></i>
+                                        <a href="" target="" rel="noreferrer">
+                                            <i className="bi bi-filetype-pdf fs-4"></i>
                                         </a>
                                     </th>
                                 </tr>
@@ -85,8 +85,8 @@ const Protocols = () => {
                                     <th>Protocolo de guardia central</th>
                                     <th>Lic. Raúl Guzmán</th>
                                     <th>
-                                        <a href="" target="">
-                                            <i class="bi bi-filetype-pdf fs-4"></i>
+                                        <a href="" target="" rel="noreferrer">
+                                            <i className="bi bi-filetype-pdf fs-4"></i>
                                         </a>
                                     </th>
                                 </tr>
@@ -94,8 +94,8 @@ const Protocols = () => {
                                     <th>Protocolo de clínica médica</th>
                                     <th>Lic. Alejandra Sanz</th>
                                     <th>
-                                        <a href="" target="">
-                                            <i class="bi bi-filetype-pdf fs-4"></i>
+                                        <a href="" target="" rel="noreferrer">
+                                            <i className="bi bi-filetype-pdf fs-4"></i>
                                         </a>
                                     </th>
                                 </tr>
@@ -103,17 +103,17 @@ const Protocols = () => {
                                     <th>Protocolo de Cirugía</th>
                                     <th>Lic. Magalí Ramos</th>
                                     <th>
-                                        <a href="" target="">
-                                            <i class="bi bi-filetype-pdf fs-4"></i>
+                                        <a href="" target="" rel="noreferrer">
+                                            <i className="bi bi-filetype-pdf fs-4"></i>
                                         </a>
                                     </th>
-                                </tr>
+                                </tr> */}
                                 <tr>
                                     <th>Convenio colectivo de trabajo</th>
                                     <th>-</th>
                                     <th>
-                                    <a href={pdfPath + "conveniocolectivodetrabajo.pdf"} target="_blank">
-                                            <i class="bi bi-filetype-pdf fs-4"></i>
+                                    <a href={pdfPath + "conveniocolectivodetrabajo.pdf"} target="_blank" rel="noreferrer">
+                                            <i className="bi bi-filetype-pdf fs-4"></i>
                                         </a>
                                     </th>
                                 </tr>

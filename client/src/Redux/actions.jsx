@@ -56,10 +56,13 @@ export const allSectors = () => {
     };
 };
 
+
+
 export const createSector = (payload) => {
     return async function(dispatch) {
         let errorMessage = '';
         try {
+            //Se procede a la creacción
             await axios.post('http://localhost:3001/sector/newsector', payload)
             dispatch({type: CREATE_NEWSECTOR })
         } catch (error) {

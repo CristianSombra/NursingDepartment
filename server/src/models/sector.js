@@ -12,6 +12,7 @@ module.exports = (sequelize) => {
           id_sector: {
             type: DataTypes.STRING,
             allowNull: false,
+            unique: true,
           },
           image: {
             type: DataTypes.STRING,
@@ -20,6 +21,7 @@ module.exports = (sequelize) => {
           name: {
             type: DataTypes.STRING,
             allowNull: false,
+            unique: true,
             },
           state: {
             type: DataTypes.ENUM('Área cerrada', 'Área abierta'), 
