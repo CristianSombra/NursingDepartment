@@ -5,7 +5,7 @@ const CardSectors = (props) => {
     const { image, name, state} = props
 
     return(
-        <div class="container">
+        <div className="container">
             <div className="row my-3 justify-content-center">
                 <div className="col">
                     <div className="card">

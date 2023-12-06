@@ -1,3 +1,4 @@
+
 import { useDispatch } from 'react-redux'
 import { createAgent, createSector } from '../../Redux/actions'
 
@@ -7,7 +8,8 @@ export function CreateAgentHandler () {
     const dispatch = useDispatch();
     async function handleCreateAgent(payload){
         try {
-            await dispatch (createAgent(payload))
+            const newAgent = await dispatch (createAgent(payload)) 
+            return newAgent;
         } catch (error) {
             console.error("Error al crear el agente", error)
         }
@@ -17,11 +19,13 @@ export function CreateAgentHandler () {
 
 
 //Handler Formulario Sector
+
 export function CreateSectorHandler () {
     const dispatch = useDispatch();
     async function handleCreateSector(payload){
         try {
-            await dispatch (createSector(payload));
+            const newSector = await dispatch (createSector(payload));
+            return newSector;
         } catch (error) {
             console.error("Error al crear el sector", error)
         }

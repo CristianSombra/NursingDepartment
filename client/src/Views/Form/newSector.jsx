@@ -9,11 +9,19 @@ const NewSector = () => {
         "image": "",
         "name": "",
         "state": ""
+    });
+
+    const [formState, setFormState ] = useState({
+        success: false,
+        message:"",
+        creatingSector: false,
     })
 
 
+
     const createSector = CreateSectorHandler();
-    
+
+
     const handleImageChange = (e) => {
         const selectedImage = e.target.files[0];
         setImageUrl(URL.createObjectURL(selectedImage));
@@ -37,12 +45,40 @@ const NewSector = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
+            // Proceder con la creación del sector
             await createSector(sector);
-        } catch (error) {
-            console.error('Error al crear el sector', error)
-        }
-    }
 
+            // Si se crea correctamente,
+            setFormState({
+                success: true,
+                message: "Servicio creado correctamente",
+                creatingSector: false,
+            });
+
+            // Limpiar el formulario
+            setSector({
+                "id_sector": "",
+                "image": "",
+                "name": "",
+                "state": ""
+            });
+
+            setTimeout(() => {
+                setFormState({
+                    ...formState,
+                    success: false,
+                });
+            }, 3000);
+
+        } catch (error) {
+            // Si no se crea correctamente,
+            setFormState({
+                success: false,
+                message: error.response?.data.message || "Error al crear el servicio",
+                creatingSector: false,
+            });
+        }
+    };
 
     return (
         <div className="container">
@@ -50,7 +86,7 @@ const NewSector = () => {
                 <div className="col-12 col-md-10">
                     <form onSubmit={handleSubmit}>
                         <div className="row my-3">
-                                <h1 className="text-center mb-4">Formulario para crear nuevo sector</h1>
+                            <h1 className="text-center mb-4">Formulario para crear nuevo sector</h1>
                             <div className="col-12 col-md-6">
                                 <div className="mb-3">
                                     <label htmlFor="image" className="form-label">Tu imagen:</label>
@@ -61,37 +97,39 @@ const NewSector = () => {
                                         onChange={handleImageChange}
                                         required
                                         className="form-control"
-                                        />
-                                        {imageUrl && (
+                                    />
+                                    {imageUrl && (
                                         <div className="mt-3 text-center">
                                             <img src={imageUrl} alt="Preview" className="img-fluid rounded" />
                                         </div>
-                                        )}
+                                    )}
                                 </div>
                             </div>
 
                             <div className="col-12 col-md-6">
                                 <div className="mb-5">
                                     <label htmlFor="nombre del servicio" className="form-label">Nombre del servicio</label>
-                                    <input 
-                                        type="text" 
+                                    <input
+                                        type="text"
                                         className="form-control"
                                         name="name"
                                         value={sector.name}
-                                        onChange={handleChange} 
-                                        placeholder="Ejemplo: Unidad de terapia intensiva pediátrica"/> 
+                                        onChange={handleChange}
+                                        placeholder="Ejemplo: Unidad de terapia intensiva pediátrica"
+                                    />
                                 </div>
                                 <div className="mb-5">
                                     <label htmlFor="id del servicio" className="form-label">ID del servicio</label>
-                                    <input 
-                                        type="text" 
+                                    <input
+                                        type="text"
                                         className="form-control"
                                         name="id_sector"
                                         value={sector.id_sector}
-                                        onChange={handleChange} 
-                                        placeholder="Ejemplo: UTIP"/>
+                                        onChange={handleChange}
+                                        placeholder="Ejemplo: UTIP"
+                                    />
                                 </div>
-                        
+
                                 <div className="mb-3">
                                     <label htmlFor="tipo de área" className="form-label">
                                         Tipo de área
@@ -123,19 +161,25 @@ const NewSector = () => {
                                         </label>
                                     </div>
                                 </div>
-                            </div>  
-                        </div>
-                            <div className="my-5 text-center">
-                                <button type="submit" className="btn btn-outline-dark">
-                                    Crear Sector
-                                </button>
                             </div>
+                        </div>
+                        <div className="my-5 text-center">
+                            <button type="submit" className="btn btn-outline-dark" disabled={formState.creatingSector}>
+                                Crear Sector
+                            </button>
+                        </div>
+                        <div
+                            className={`alert ${formState.message && (formState.success ? 'alert-success' : 'alert-danger')}`}
+                            role="alert"
+                        >
+                            {formState.message}
+                        </div>
+
                     </form>
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
-
-export default NewSector
+export default NewSector;
