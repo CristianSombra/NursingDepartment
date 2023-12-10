@@ -3,8 +3,9 @@ import axios from "axios";
 export const ERROR = 'ERROR';
 export const GET_ALL_AGENTS = 'GET_ALL_AGENTS';
 export const GET_ALL_SECTORS = 'GET_ALL_SECTORS';
-export const CREATE_NEWSECTOR = 'CREATE_NEWSECTOR';
 export const CREATE_NEWAGENT = 'CREATE_NEWAGENT'
+export const CREATE_NEWSECTOR = 'CREATE_NEWSECTOR';
+export const GET_SECTOR = 'GET_SECTOR';
 
 
 //SECCIÓN AGENTE
@@ -27,21 +28,19 @@ export const allAgents = () => {
 
 export const createAgent = (payload) => {
     return async function(dispatch) {
-        let errorMessage = '';
+        dispatch({type: CREATE_NEWAGENT })
         try {
+            // console.log("Sending Agent Data:", payload);
             await axios.post('http://localhost:3001/agents/newagent', payload)
-            dispatch({type: CREATE_NEWAGENT })
         } catch (error) {
-            const errorMessage = 'Error al crear el Agente'
-            dispatch({type: ERROR, payload: errorMessage})
+            throw new Error('Error al crear el Agente');
         }
-        return errorMessage;
     }
 }
 
 
 //SECCIÓN SECTOR
-export const allSectors = () => {
+export const getAllSectors = () => {
     return async function(dispatch) {
         let errorMessage = '';
         try {
@@ -57,12 +56,10 @@ export const allSectors = () => {
 };
 
 
-
 export const createSector = (payload) => {
     return async function(dispatch) {
         let errorMessage = '';
         try {
-            //Se procede a la creacción
             await axios.post('http://localhost:3001/sector/newsector', payload)
             dispatch({type: CREATE_NEWSECTOR })
         } catch (error) {

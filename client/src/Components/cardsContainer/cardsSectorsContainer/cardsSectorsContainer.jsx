@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import CardSectors from '../../card/cardSectors/cardSectors';
-import { allSectors } from "../../../Redux/actions";
+import { getAllSectors } from "../../../Redux/actions";
 import {useDispatch, useSelector} from "react-redux";
 
 const CardsSectorsContainer = () => {
@@ -10,7 +10,7 @@ const CardsSectorsContainer = () => {
     const cardsPerPage = 6;
 
 useEffect(()=> {
-    dispatch(allSectors())
+    dispatch(getAllSectors())
 }, [dispatch]);
 
 //Calculo los índices de las cards a mostrar en la página
