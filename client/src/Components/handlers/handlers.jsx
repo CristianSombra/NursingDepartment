@@ -1,4 +1,4 @@
-
+import { useState } from 'react';
 import { useDispatch } from 'react-redux'
 import { createAgent, createSector } from '../../Redux/actions'
 
@@ -20,6 +20,7 @@ export function CreateAgentHandler () {
 
 //Handler Formulario Sector
 
+
 export function CreateSectorHandler () {
     const dispatch = useDispatch();
     async function handleCreateSector(payload){
@@ -32,3 +33,16 @@ export function CreateSectorHandler () {
     }
     return handleCreateSector
 };
+
+export function useSectorChangeHandler () {
+    const [selectedSector, setSelectedSector] = useState("All");
+
+    function handleSectorChange(newSelectedSector) {
+        setSelectedSector(newSelectedSector);
+    }
+
+    return {
+        selectedSector,
+        handleSectorChange,
+    };
+}

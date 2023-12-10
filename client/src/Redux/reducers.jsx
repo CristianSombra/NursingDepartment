@@ -3,6 +3,8 @@ import { ERROR, GET_ALL_AGENTS, GET_ALL_SECTORS, CREATE_NEWAGENT, CREATE_NEWSECT
 const initialstate = {
     agents: [],
     sectors: [],
+    creatingAgent: false,
+    createAgentError: null
 }
 
 const rootReducer = (state = initialstate, action) => {

@@ -1,50 +1,79 @@
-import React,{ useState } from "react";
-import { CreateAgentHandler } from "../../Components/handlers/handlers";
+import React,{ useState, useEffect } from "react";
+import { getAllSectors } from "../../Redux/actions";
+import { CreateAgentHandler, useSectorChangeHandler } from "../../Components/handlers/handlers";
+import { useSelector, useDispatch } from "react-redux";
 
 
 const NewAgent = () => {
-    const [imageUrl, setImageUrl] = useState("");
+    const allSectorsData = useSelector((state) => state.sectors)
+    const dispatch = useDispatch();
     const [agent, setAgent] = useState({
-
+            "id": 0,
+            "name": "",
+            "dni": "",
+            "gender": "",
+            "birthday": "",
+            "email": "",
+            "phone": "",
+            "address": "",
+            "dateAdmission": "",
+            "academicLevel": "",
+            "state": "",
+            "position": "",
+            "time": "",
     })
 
-
     const createAgent = CreateAgentHandler();
+    const  { selectedSector , handleSectorChange } = useSectorChangeHandler()
 
-    const handleImageChange = (e) => {
-        const selectedImage = e.target.files[0];
-        setImageUrl(URL.createObjectURL(selectedImage));
-    }
+    useEffect(() => {
+        dispatch(getAllSectors(selectedSector));
+    }, [dispatch, selectedSector]);
 
+    useEffect(() => {
+        handleSectorChange(selectedSector);
+    }, [handleSectorChange, selectedSector]);
+    
+    
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setAgent ((prevAgent) => ({
+        console.log(`Campo ${name} actualizado con el valor: ${value}`);
+        
+        setAgent((prevAgent) => ({
             ...prevAgent,
-            [name]: value
+            [name]: name === 'id' ? Number(value) : value,
         }));
+
     };
+    
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await createAgent(agent);
-        } catch (error) {
-            console.error('Error al crear el agente', error)
+            const response = await createAgent({ agentData: agent });
+            if (response && response.agentData) {
+                setAgent(response.agentData);
+            } else {
+                console.error("La respuesta del servidor no contiene datos válidos");
+            }
+            } catch (error) {
+                console.error("Error al crear el agente", error);
         }
-    }
+    };
+
 
     return (
         <div className="container">
             <div className="row mt-5 d-flex justify-content-center">
                 <div className="col-12 col-md-10">
-                    <form action="">
+                    <form onSubmit={handleSubmit}>
                         <div className="row my-3">
                             <h1 className="text-center mb-4">Formulario para crear nuevo agente</h1>
 
                             <div className="col-12 col-md-6">
                                 <div className="mb-3">
                                     <label htmlFor="" className="form-label">Tu imagen:</label>
-                                    <input 
+                                    {/* <input 
                                         type="file" 
                                         id="image"
                                         accept="image/*"
@@ -54,9 +83,9 @@ const NewAgent = () => {
                                         />
                                         {imageUrl && (
                                         <div className="mt-5 text-center">
-                                            <img src={imageUrl} alt="Preview" className="img-fluid rounded" />
+                                            <img src={imageUrl} alt="Vista previa del agente" className="img-fluid rounded" />
                                         </div>
-                                        )}
+                                        )} */}
                                 </div>
                             </div>
 
@@ -64,30 +93,28 @@ const NewAgent = () => {
                                 <div className="row">
                                     <div className="col-12">
                                         <label htmlFor="nombre y apellido" className="form-label">Nombre y apellido</label>
-                                        <input type="text" className="form-control" id="nombre y apellido"/>
+                                        <input name="name" type="text" className="form-control" id="nombre y apellido" value={agent?.name || ''} onChange={handleChange} />
                                     </div>
 
                                     <div className="col-12 mt-3">
                                         <label htmlFor="nivel academico" className="form-label">Nivel académico</label>
-                                        <select name="nivel academico" id="nivel academico" className="form-select">
-                                            <option value="default">
-                                                <p className="text-muted">Elije una opción</p>
-                                                </option>
-                                            <option value="">Auxiliar</option>
-                                            <option value="">Técnico Superior en Enfermería</option>
-                                            <option value="">Enfermero Profesional</option>
-                                            <option value="">Enfermero Universitario</option>
-                                            <option value="">Licenciado en Enfermería</option>
+                                        <select name="academicLevel" id="nivel academico" className="form-select" value={agent.academicLevel} onChange={handleChange}>
+                                            <option value="default">Elije una opción</option>
+                                            <option value="Auxiliar">Auxiliar</option>
+                                            <option value="Técnico Superior en Enfermería">Técnico Superior en Enfermería</option>
+                                            <option value="Enfermero Profesional">Enfermero Profesional</option>
+                                            <option value="Enfermero Universitario">Enfermero Universitario</option>
+                                            <option value="Licenciado en Enfermería">Licenciado en Enfermería</option>
                                         </select>
                                     </div>
 
                                     <div className="col-12 mt-3">
                                         <label htmlFor="domicilio" className="form-label">Domicilio</label>
-                                        <input type="text" className="form-control" id="domicilio"/>
+                                        <input name="address" type="text" className="form-control" id="domicilio" value={agent.address} onChange={handleChange}/>
                                     </div>
                                     <div className="col-12 mt-3">
                                         <label htmlFor="email" className="form-label">Email</label>
-                                        <input type="text" className="form-control" id="email"/>
+                                        <input name="email" type="text" className="form-control" id="email" value={agent.email} onChange={handleChange}/>
                                     </div>
                                 </div>
                                 
@@ -96,69 +123,79 @@ const NewAgent = () => {
                                         <div className="row mt-3">
                                             <div className="col-12 col-sm-6">
                                                 <label htmlFor="dni" className="form-label">DNI</label>
-                                                <input type="text" className="form-control" id="dni"/>
+                                                <input name="dni" type="text" className="form-control" id="dni" value={agent.dni} onChange={handleChange} />
                                             </div>
                                             <div className="col-12 col-sm-6">
                                                 <label htmlFor="matricula" className="form-label">N° de matrícula</label>
-                                                <input type="text" className="form-control" id="matricula"/>    
+                                                <input name="id" type="text" className="form-control" id="matricula" value={agent.id} onChange={handleChange} />    
                                             </div>
                                         </div>
                                         <div className="row mt-3">
                                             <div className="col-12 col-sm-6">
                                                 <label htmlFor="genero" className="form-label">Género</label>
-                                                <select name="genero" id="genero" className="form-select">
+                                                <select name="gender" id="genero" className="form-select" value={agent.gender} onChange={handleChange}>
                                                     <option value="default">Elije una opción</option>
-                                                    <option value="hombre">Hombre</option>
-                                                    <option value="mujer">Mujer</option>
-                                                    <option value="otro">Otro</option>
+                                                    <option value="M">M</option>
+                                                    <option value="F">F</option>
+                                                    <option value="X">X</option>
                                                 </select>
                                             </div>
                                             <div className="col-12 col-sm-6">
                                                 <label htmlFor="nacimiento" className="form-label">Nacimiento</label>
-                                                <input type="text" className="form-control" id="nacimiento"/>    
+                                                <input name="birthday" type="text" className="form-control" id="nacimiento" value={agent.birthday} onChange={handleChange}/>    
                                             </div>
                                         </div>
                                         <div className="row mt-3">
                                             <div className="col-12 col-sm-6">
                                                 <label htmlFor="celular" className="form-label">Celular</label>
-                                                <input type="text" className="form-control" id="celular"/>
+                                                <input name="phone" type="text" className="form-control" id="celular" value={agent.phone} onChange={handleChange}/>
                                             </div>
                                             <div className="col-12 col-sm-6">
                                                 <label htmlFor="fecha de admisión" className="form-label">Fecha de admisión</label>
-                                                <input type="text" className="form-control" id="matricula"/>    
+                                                <input name="dateAdmission" type="text" className="form-control" id="fecha de admisión" value={agent.dateAdmission} onChange={handleChange}/>    
                                             </div>
                                         </div>
                                         <div className="row mt-3">
                                             <div className="col-12 col-sm-6">
                                                 <label htmlFor="sector" className="form-label">Sector</label>
-                                                <select name="sector" id="sector" className="form-select">
-                                                    <option value="falta">Crear código para recibir los servicios</option>
-                                                </select>
+                                                    <select
+                                                            name="id_sector" 
+                                                            id="id_sector" 
+                                                            className="form-select"
+                                                            value={agent.sector} 
+                                                            onChange={handleChange}
+                                                            >
+                                                        <option value="All">Seleccionar sector</option>
+                                                                {allSectorsData && allSectorsData.map(sector => (
+                                                                <option value={sector.id_sector} key={sector.id}>{sector.name}</option>
+                                                            ))}
+                                                    </select>
+
                                             </div>
                                             <div className="col-12 col-sm-6">
                                                 <label htmlFor="estado" className="form-label">Estado</label>
-                                                <select name="estado" id="estado" className="form-select">
+                                                <select name="state" id="estado" className="form-select" value={agent.state} onChange={handleChange}>
                                                     <option value="default">Elije una opción</option>
-                                                    <option value="">Contratado</option>
-                                                    <option value="">Planta</option>
+                                                    <option value="Contratado">Contratado</option>
+                                                    <option value="Planta">Planta</option>
                                                 </select>    
                                             </div>
                                         </div>
                                         <div className="row mt-3">
                                             <div className="col-12 col-sm-6">
                                                 <label htmlFor="posicion" className="form-label">Posición</label>
-                                                <select name="posicion" id="posicion" className="form-select">
+                                                <select name="position" id="posicion" className="form-select" value={agent.position} onChange={handleChange}>
                                                     <option value="default">Elije una opción</option>
-                                                    <option value="piso">Piso</option>
-                                                    <option value="jefe de area">Jefe de área</option>
-                                                    <option value="supervisor de turno">Supervisor de turno</option>
-                                                    <option value="jefe de departamento">Jefe de departamento</option>
-                                                    <option value="director">Director</option>
+                                                    <option value="Piso">Piso</option>
+                                                    <option value="Jefe de área">Jefe de área</option>
+                                                    <option value="Supervisor de turno">Supervisor de turno</option>
+                                                    <option value="Jefe de departamento">Jefe de departamento</option>
+                                                    <option value="Director">Director</option>
                                                 </select>
                                             </div>
                                             <div className="col-12 col-sm-6">
                                                 <label htmlFor="horario" className="form-label">Horario</label>
-                                                <select name="horario" id="horario" className="form-select">
+                                                <select name="time" id="horario" className="form-select" value={agent.time} onChange={handleChange}>
                                                     <option value="default">Elije una opción</option>
                                                     <option value="00-06">00-06</option>
                                                     <option value="06-12">06-12</option>
