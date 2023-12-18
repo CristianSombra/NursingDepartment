@@ -16,9 +16,9 @@ createAgent: async (req, res) => {
     const agentData = req.body.agentData;
     try {
         const newAgent = await agentsController.createAgent(agentData);
-        res.status(200).json(newAgent)
+        res.status(200).json(newAgent);
     } catch (error) {
-        res.status(400).json({error:error.message})
+        res.status(400).json({ error: `Error creating agent: ${error.message}` });
     }
 }
 };

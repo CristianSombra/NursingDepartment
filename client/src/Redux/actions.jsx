@@ -28,13 +28,17 @@ export const allAgents = () => {
 
 export const createAgent = (payload) => {
     return async function(dispatch) {
-        dispatch({type: CREATE_NEWAGENT })
+        let errorMessage = '';
         try {
-            // console.log("Sending Agent Data:", payload);
-            await axios.post('http://localhost:3001/agents/newagent', payload)
+            const response = await axios.post('http://localhost:3001/agents/newagent', payload)
+            console.log(response)
+            dispatch({type: CREATE_NEWAGENT })
+            return response;
         } catch (error) {
-            throw new Error('Error al crear el Agente');
+            const errorMessage = 'Error al crear el agente'
+            dispatch({type: ERROR, payload: errorMessage})
         }
+        return errorMessage;
     }
 }
 
