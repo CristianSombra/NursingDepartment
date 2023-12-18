@@ -4,7 +4,9 @@ const initialstate = {
     agents: [],
     sectors: [],
     creatingAgent: false,
-    createAgentError: null
+    createAgentError: null,
+    creatingSector: false,
+    createSectorError: null
 }
 
 const rootReducer = (state = initialstate, action) => {

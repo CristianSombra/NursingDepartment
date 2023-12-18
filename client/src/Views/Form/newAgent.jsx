@@ -7,8 +7,10 @@ import { useSelector, useDispatch } from "react-redux";
 const NewAgent = () => {
     const allSectorsData = useSelector((state) => state.sectors)
     const dispatch = useDispatch();
+    const [imageUrl, setImageUrl] = useState("");
     const [agent, setAgent] = useState({
-            "id": 0,
+            "id": "",
+            "image": "",
             "name": "",
             "dni": "",
             "gender": "",
@@ -26,6 +28,12 @@ const NewAgent = () => {
     const createAgent = CreateAgentHandler();
     const  { selectedSector , handleSectorChange } = useSectorChangeHandler()
 
+    const [formState, setFormState ] = useState({
+        success: false,
+        message:"",
+        creatingSector: false,
+    })
+
     useEffect(() => {
         dispatch(getAllSectors(selectedSector));
     }, [dispatch, selectedSector]);
@@ -33,7 +41,11 @@ const NewAgent = () => {
     useEffect(() => {
         handleSectorChange(selectedSector);
     }, [handleSectorChange, selectedSector]);
-    
+
+    const handleImageChange = (e) => {
+        const selectedImage = e.target.files[0];
+        setImageUrl(URL.createObjectURL(selectedImage));
+    };
     
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -47,17 +59,52 @@ const NewAgent = () => {
     };
     
 
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await createAgent({ agentData: agent });
-            if (response && response.agentData) {
-                setAgent(response.agentData);
-            } else {
-                console.error("La respuesta del servidor no contiene datos válidos");
-            }
-            } catch (error) {
-                console.error("Error al crear el agente", error);
+            // Proceder con la creación del agente
+            await createAgent({ agentData: agent });
+
+            // Si se crea correctamente,
+            setFormState({
+                success: true,
+                message: "Agente creado correctamente",
+                creatingSector: false,
+            });
+
+            // Limpiar el formulario
+            setAgent({
+                "id": "",
+                "image": "",
+                "name": "",
+                "dni": "",
+                "gender": "",
+                "birthday": "",
+                "email": "",
+                "phone": "",
+                "address": "",
+                "dateAdmission": "",
+                "academicLevel": "",
+                "state": "",
+                "position": "",
+                "time": "",
+            });
+
+            setTimeout(() => {
+                setFormState({
+                    ...formState,
+                    success: false,
+                });
+            }, 3000);
+
+        } catch (error) {
+            // Si no se crea correctamente,
+            setFormState({
+                success: false,
+                message: error.response?.data.message || "Error al crear el agente",
+                creatingAgent: false,
+            });
         }
     };
 
@@ -72,8 +119,8 @@ const NewAgent = () => {
 
                             <div className="col-12 col-md-6">
                                 <div className="mb-3">
-                                    <label htmlFor="" className="form-label">Tu imagen:</label>
-                                    {/* <input 
+                                    <label htmlFor="imagen" className="form-label">Tu imagen:</label>
+                                    <input 
                                         type="file" 
                                         id="image"
                                         accept="image/*"
@@ -85,7 +132,7 @@ const NewAgent = () => {
                                         <div className="mt-5 text-center">
                                             <img src={imageUrl} alt="Vista previa del agente" className="img-fluid rounded" />
                                         </div>
-                                        )} */}
+                                        )}
                                 </div>
                             </div>
 
@@ -93,7 +140,7 @@ const NewAgent = () => {
                                 <div className="row">
                                     <div className="col-12">
                                         <label htmlFor="nombre y apellido" className="form-label">Nombre y apellido</label>
-                                        <input name="name" type="text" className="form-control" id="nombre y apellido" value={agent?.name || ''} onChange={handleChange} />
+                                        <input name="name" type="text" className="form-control" id="nombre y apellido" value={agent.name} onChange={handleChange} />
                                     </div>
 
                                     <div className="col-12 mt-3">
@@ -127,7 +174,7 @@ const NewAgent = () => {
                                             </div>
                                             <div className="col-12 col-sm-6">
                                                 <label htmlFor="matricula" className="form-label">N° de matrícula</label>
-                                                <input name="id" type="text" className="form-control" id="matricula" value={agent.id} onChange={handleChange} />    
+                                                <input name="id" type="number" className="form-control" id="matricula" value={agent.id} onChange={handleChange} />    
                                             </div>
                                         </div>
                                         <div className="row mt-3">
@@ -142,7 +189,7 @@ const NewAgent = () => {
                                             </div>
                                             <div className="col-12 col-sm-6">
                                                 <label htmlFor="nacimiento" className="form-label">Nacimiento</label>
-                                                <input name="birthday" type="text" className="form-control" id="nacimiento" value={agent.birthday} onChange={handleChange}/>    
+                                                <input name="birthday" type="date" className="form-control" id="nacimiento" value={agent.birthday} onChange={handleChange}/>    
                                             </div>
                                         </div>
                                         <div className="row mt-3">
@@ -152,7 +199,7 @@ const NewAgent = () => {
                                             </div>
                                             <div className="col-12 col-sm-6">
                                                 <label htmlFor="fecha de admisión" className="form-label">Fecha de admisión</label>
-                                                <input name="dateAdmission" type="text" className="form-control" id="fecha de admisión" value={agent.dateAdmission} onChange={handleChange}/>    
+                                                <input name="dateAdmission" type="date" className="form-control" id="fecha de admisión" value={agent.dateAdmission} onChange={handleChange}/>    
                                             </div>
                                         </div>
                                         <div className="row mt-3">
@@ -216,6 +263,12 @@ const NewAgent = () => {
                                     Crear agente
                                 </button>
                             </div>
+                            <div
+                            className={`alert ${formState.message && (formState.success ? 'alert-success' : 'alert-danger')}`}
+                            role="alert"
+                        >
+                            {formState.message}
+                        </div>
                     </form>
                 </div>
             </div>

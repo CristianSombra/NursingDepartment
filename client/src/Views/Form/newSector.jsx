@@ -17,8 +17,6 @@ const NewSector = () => {
         creatingSector: false,
     })
 
-
-
     const createSector = CreateSectorHandler();
 
 
@@ -174,7 +172,6 @@ const NewSector = () => {
                         >
                             {formState.message}
                         </div>
-
                     </form>
                 </div>
             </div>
