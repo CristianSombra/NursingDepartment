@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import { CreateSectorHandler } from "../../Components/handlers/handlers";
+import { Image, Transformation, CloudinaryContext } from "cloudinary-react";
+
+const cloudinaryCloudName = "nursingstaff"; // Reemplazo con mi cloud name
+const cloudinaryUploadPreset = "preset_nursingstaff"; // Reemplazo con mi upload preset
 
 
 const NewSector = () => {
-    const [imageUrl, setImageUrl] = useState("");
     const [sector, setSector] = useState({
         "id_sector": "",
-        "image": "",
+        "image": null,
         "name": "",
         "state": ""
     });
@@ -20,9 +23,32 @@ const NewSector = () => {
     const createSector = CreateSectorHandler();
 
 
-    const handleImageChange = (e) => {
+    const handleImageChange = async (e) => {
         const selectedImage = e.target.files[0];
-        setImageUrl(URL.createObjectURL(selectedImage));
+
+        // Subir la imagen a Cloudinary
+        const formData = new FormData();
+        formData.append("file", selectedImage);
+        formData.append("upload_preset", cloudinaryUploadPreset);
+
+        try {
+            const response = await fetch(
+                `https://api.cloudinary.com/v1_1/${cloudinaryCloudName}/image/upload`,
+                {
+                    method: "POST",
+                    body: formData,
+                }
+            );
+
+            const data = await response.json();
+            console.log(data);
+            setSector((prevSector) => ({
+                ...prevSector,
+                image: data.secure_url,
+            }));
+        } catch (error) {
+            console.error("Error al subir la imagen a Cloudinary:", error);
+        }
     };
 
     const handleChange = (e) => {
@@ -56,7 +82,7 @@ const NewSector = () => {
             // Limpiar el formulario
             setSector({
                 "id_sector": "",
-                "image": "",
+                "image": null,
                 "name": "",
                 "state": ""
             });
@@ -96,9 +122,14 @@ const NewSector = () => {
                                         required
                                         className="form-control"
                                     />
-                                    {imageUrl && (
+                                    {sector.image && (
                                         <div className="mt-3 text-center">
-                                            <img src={imageUrl} alt="Preview" className="img-fluid rounded" />
+                                            {/* Utilizo CloudinaryContext y Image para mostrar la imagen */}
+                                            <CloudinaryContext cloudName={cloudinaryCloudName}>
+                                                <Image publicId={sector.image}>
+                                                    <Transformation width="130" height="130" crop="fill" />
+                                                </Image>
+                                            </CloudinaryContext>
                                         </div>
                                     )}
                                 </div>
