@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { CreateSectorHandler } from "../../Components/handlers/handlers";
-import { Image, Transformation, CloudinaryContext } from "cloudinary-react";
+import { Image, CloudinaryContext } from "cloudinary-react";
 
 const cloudinaryCloudName = "nursingstaff"; // Reemplazo con mi cloud name
 const cloudinaryUploadPreset = "preset_nursingstaff"; // Reemplazo con mi upload preset
@@ -124,11 +124,8 @@ const NewSector = () => {
                                     />
                                     {sector.image && (
                                         <div className="mt-3 text-center">
-                                            {/* Utilizo CloudinaryContext y Image para mostrar la imagen */}
                                             <CloudinaryContext cloudName={cloudinaryCloudName}>
-                                                <Image publicId={sector.image}>
-                                                    <Transformation width="130" height="130" crop="fill" />
-                                                </Image>
+                                                <Image publicId={sector.image} className="img-fluid" />
                                             </CloudinaryContext>
                                         </div>
                                     )}
