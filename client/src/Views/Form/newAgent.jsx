@@ -2,15 +2,14 @@ import React,{ useState, useEffect } from "react";
 import { getAllSectors } from "../../Redux/actions";
 import { CreateAgentHandler, useSectorChangeHandler } from "../../Components/handlers/handlers";
 import { useSelector, useDispatch } from "react-redux";
-
+import ImageUpload from "../../Components/cloudinary/cloudinary";
 
 const NewAgent = () => {
     const allSectorsData = useSelector((state) => state.sectors)
     const dispatch = useDispatch();
-    const [imageUrl, setImageUrl] = useState("");
     const [agent, setAgent] = useState({
             "id": "",
-            "image": "",
+            "image": null,
             "name": "",
             "dni": "",
             "gender": "",
@@ -42,10 +41,6 @@ const NewAgent = () => {
         handleSectorChange(selectedSector);
     }, [handleSectorChange, selectedSector]);
 
-    const handleImageChange = (e) => {
-        const selectedImage = e.target.files[0];
-        setImageUrl(URL.createObjectURL(selectedImage));
-    };
     
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -58,7 +53,12 @@ const NewAgent = () => {
 
     };
     
-
+    const handleImageChange = (imageUrl) => {
+        setAgent((prevAgent) => ({
+            ...prevAgent,
+            image: imageUrl
+        }));
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -76,7 +76,7 @@ const NewAgent = () => {
             // Limpiar el formulario
             setAgent({
                 "id": "",
-                "image": "",
+                "image": null,
                 "name": "",
                 "dni": "",
                 "gender": "",
@@ -120,19 +120,9 @@ const NewAgent = () => {
                             <div className="col-12 col-md-6">
                                 <div className="mb-3">
                                     <label htmlFor="imagen" className="form-label">Tu imagen:</label>
-                                    <input 
-                                        type="file" 
-                                        id="image"
-                                        accept="image/*"
-                                        onChange={handleImageChange}
-                                        required
-                                        className="form-control" 
-                                        />
-                                        {imageUrl && (
-                                        <div className="mt-5 text-center">
-                                            <img src={imageUrl} alt="Vista previa del agente" className="img-fluid rounded" />
+                                        <div className="mt-3 text-center">
+                                            <ImageUpload setImageCallback={handleImageChange} />
                                         </div>
-                                        )}
                                 </div>
                             </div>
 

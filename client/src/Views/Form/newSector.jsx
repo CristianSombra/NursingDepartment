@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import { CreateSectorHandler } from "../../Components/handlers/handlers";
-import { Image, CloudinaryContext } from "cloudinary-react";
-
-const cloudinaryCloudName = "nursingstaff"; // Reemplazo con mi cloud name
-const cloudinaryUploadPreset = "preset_nursingstaff"; // Reemplazo con mi upload preset
+import ImageUpload from "../../Components/cloudinary/cloudinary";
 
 
 const NewSector = () => {
@@ -14,42 +11,14 @@ const NewSector = () => {
         "state": ""
     });
 
+    const createSector = CreateSectorHandler();
+
     const [formState, setFormState ] = useState({
         success: false,
         message:"",
         creatingSector: false,
     })
 
-    const createSector = CreateSectorHandler();
-
-
-    const handleImageChange = async (e) => {
-        const selectedImage = e.target.files[0];
-
-        // Subir la imagen a Cloudinary
-        const formData = new FormData();
-        formData.append("file", selectedImage);
-        formData.append("upload_preset", cloudinaryUploadPreset);
-
-        try {
-            const response = await fetch(
-                `https://api.cloudinary.com/v1_1/${cloudinaryCloudName}/image/upload`,
-                {
-                    method: "POST",
-                    body: formData,
-                }
-            );
-
-            const data = await response.json();
-            console.log(data);
-            setSector((prevSector) => ({
-                ...prevSector,
-                image: data.secure_url,
-            }));
-        } catch (error) {
-            console.error("Error al subir la imagen a Cloudinary:", error);
-        }
-    };
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -63,6 +32,13 @@ const NewSector = () => {
         setSector((prevSector) => ({
             ...prevSector,
             state: areaType
+        }));
+    };
+
+    const handleImageChange = (imageUrl) => {
+        setSector((prevSector) => ({
+            ...prevSector,
+            image: imageUrl
         }));
     };
 
@@ -114,21 +90,9 @@ const NewSector = () => {
                             <div className="col-12 col-md-6">
                                 <div className="mb-3">
                                     <label htmlFor="image" className="form-label">Tu imagen:</label>
-                                    <input
-                                        type="file"
-                                        id="image"
-                                        accept="image/*"
-                                        onChange={handleImageChange}
-                                        required
-                                        className="form-control"
-                                    />
-                                    {sector.image && (
                                         <div className="mt-3 text-center">
-                                            <CloudinaryContext cloudName={cloudinaryCloudName}>
-                                                <Image publicId={sector.image} className="img-fluid" />
-                                            </CloudinaryContext>
+                                            <ImageUpload setImageCallback={handleImageChange} />
                                         </div>
-                                    )}
                                 </div>
                             </div>
 
