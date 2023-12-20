@@ -16,7 +16,6 @@ export const allAgents = () => {
         try {
             const response = await axios.get('http://localhost:3001/agents');
             const agents = response.data
-            console.log('Estos son los agentes:', agents)
             dispatch({type:GET_ALL_AGENTS, payload: agents})
         } catch (error) {
             errorMessage='Error al cargar a los agentes'
