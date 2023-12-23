@@ -88,9 +88,9 @@ const NewSector = () => {
                         <div className="row my-3">
                             <h1 className="text-center mb-4">Formulario para crear nuevo sector</h1>
                             <div className="col-12 col-md-6">
-                                <div className="mb-3">
+                                <div className="mb-5">
                                     <label htmlFor="image" className="form-label">Tu imagen:</label>
-                                        <div className="mt-3 text-center">
+                                        <div className="mb-3 text-center">
                                             <ImageUpload setImageCallback={handleImageChange} />
                                         </div>
                                 </div>
@@ -101,7 +101,7 @@ const NewSector = () => {
                                     <label htmlFor="nombre del servicio" className="form-label">Nombre del servicio:</label>
                                     <input
                                         type="text"
-                                        className="form-control mt-3"
+                                        className="form-control"
                                         name="name"
                                         value={sector.name}
                                         onChange={handleChange}
@@ -112,7 +112,7 @@ const NewSector = () => {
                                     <label htmlFor="id del servicio" className="form-label">ID del servicio:</label>
                                     <input
                                         type="text"
-                                        className="form-control mt-3"
+                                        className="form-control"
                                         name="id_sector"
                                         value={sector.id_sector}
                                         onChange={handleChange}
@@ -124,7 +124,7 @@ const NewSector = () => {
                                     <label htmlFor="tipo de área" className="form-label">
                                         Tipo de área:
                                     </label>
-                                    <div className="form-check mt-3">
+                                    <div className="form-check">
                                         <input
                                             type="radio"
                                             className="form-check-input"

@@ -120,7 +120,7 @@ const NewAgent = () => {
                             <div className="col-12 col-md-6">
                                 <div className="mb-3">
                                     <label htmlFor="imagen" className="form-label">Tu imagen:</label>
-                                        <div className="mt-3 text-center">
+                                        <div className="mb-5 text-center">
                                             <ImageUpload setImageCallback={handleImageChange} />
                                         </div>
                                 </div>
@@ -157,18 +157,18 @@ const NewAgent = () => {
                                 
                                 <div className="row">
                                     <div className="col-12">
-                                        <div className="row mt-3">
-                                            <div className="col-12 col-sm-6">
+                                        <div className="row">
+                                            <div className="col-12 col-sm-6 mt-3">
                                                 <label htmlFor="dni" className="form-label">DNI</label>
                                                 <input name="dni" type="text" className="form-control" id="dni" value={agent.dni} onChange={handleChange} />
                                             </div>
-                                            <div className="col-12 col-sm-6">
+                                            <div className="col-12 col-sm-6 mt-3">
                                                 <label htmlFor="matricula" className="form-label">N° de matrícula</label>
                                                 <input name="id" type="number" className="form-control" id="matricula" value={agent.id} onChange={handleChange} />    
                                             </div>
                                         </div>
-                                        <div className="row mt-3">
-                                            <div className="col-12 col-sm-6">
+                                        <div className="row">
+                                            <div className="col-12 col-sm-6 mt-3">
                                                 <label htmlFor="genero" className="form-label">Género</label>
                                                 <select name="gender" id="genero" className="form-select" value={agent.gender} onChange={handleChange}>
                                                     <option value="default">Elije una opción</option>
@@ -177,23 +177,23 @@ const NewAgent = () => {
                                                     <option value="X">X</option>
                                                 </select>
                                             </div>
-                                            <div className="col-12 col-sm-6">
+                                            <div className="col-12 col-sm-6 mt-3">
                                                 <label htmlFor="nacimiento" className="form-label">Nacimiento</label>
                                                 <input name="birthday" type="date" className="form-control" id="nacimiento" value={agent.birthday} onChange={handleChange}/>    
                                             </div>
                                         </div>
-                                        <div className="row mt-3">
-                                            <div className="col-12 col-sm-6">
+                                        <div className="row">
+                                            <div className="col-12 col-sm-6 mt-3">
                                                 <label htmlFor="celular" className="form-label">Celular</label>
                                                 <input name="phone" type="text" className="form-control" id="celular" value={agent.phone} onChange={handleChange}/>
                                             </div>
-                                            <div className="col-12 col-sm-6">
+                                            <div className="col-12 col-sm-6 mt-3">
                                                 <label htmlFor="fecha de admisión" className="form-label">Fecha de admisión</label>
                                                 <input name="dateAdmission" type="date" className="form-control" id="fecha de admisión" value={agent.dateAdmission} onChange={handleChange}/>    
                                             </div>
                                         </div>
-                                        <div className="row mt-3">
-                                            <div className="col-12 col-sm-6">
+                                        <div className="row">
+                                            <div className="col-12 col-sm-6 mt-3">
                                                 <label htmlFor="sector" className="form-label">Sector</label>
                                                     <select
                                                             name="id_sector" 
@@ -209,7 +209,7 @@ const NewAgent = () => {
                                                     </select>
 
                                             </div>
-                                            <div className="col-12 col-sm-6">
+                                            <div className="col-12 col-sm-6 mt-3">
                                                 <label htmlFor="estado" className="form-label">Estado</label>
                                                 <select name="state" id="estado" className="form-select" value={agent.state} onChange={handleChange}>
                                                     <option value="default">Elije una opción</option>
@@ -218,8 +218,8 @@ const NewAgent = () => {
                                                 </select>    
                                             </div>
                                         </div>
-                                        <div className="row mt-3">
-                                            <div className="col-12 col-sm-6">
+                                        <div className="row">
+                                            <div className="col-12 col-sm-6 mt-3">
                                                 <label htmlFor="posicion" className="form-label">Posición</label>
                                                 <select name="position" id="posicion" className="form-select" value={agent.position} onChange={handleChange}>
                                                     <option value="default">Elije una opción</option>
@@ -230,7 +230,7 @@ const NewAgent = () => {
                                                     <option value="Director">Director</option>
                                                 </select>
                                             </div>
-                                            <div className="col-12 col-sm-6">
+                                            <div className="col-12 col-sm-6 mt-3">
                                                 <label htmlFor="horario" className="form-label">Horario</label>
                                                 <select name="time" id="horario" className="form-select" value={agent.time} onChange={handleChange}>
                                                     <option value="default">Elije una opción</option>
