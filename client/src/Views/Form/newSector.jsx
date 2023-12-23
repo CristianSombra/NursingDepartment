@@ -19,14 +19,52 @@ const NewSector = () => {
         creatingSector: false,
     })
 
+    const [validationName, setValidationName] = useState({name: ""});
+    const [validationId, setValidationId] = useState({id:""});
+    const [imageUploadKey, setImageUploadKey] = useState(0);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setSector((prevSector) => ({
-            ...prevSector,
-            [name]: value
-        }));
+    
+        if (name === "name") {
+            // Validar el nombre: solo letras y no más de 30 caracteres
+            const isValid = /^[a-zA-Z\s]{0,30}$/.test(value);
+    
+            setValidationName((prevErrors) => ({
+                ...prevErrors,
+                name: isValid
+                    ? ""
+                    : "El nombre debe contener solo letras y no exceder los 30 caracteres.",
+            }));
+    
+            if (isValid) {
+                setSector((prevSector) => ({
+                    ...prevSector,
+                    [name]: value,
+                }));
+            }
+        }
+    
+        if (name === "id_sector") {
+            // Validar el ID del servicio: solo mayúsculas y no más de 5 caracteres
+            const isValidId = /^[A-Z]{0,5}$/.test(value);
+    
+            setValidationId((prevErrors) => ({
+                ...prevErrors,
+                id: isValidId
+                    ? ""
+                    : "El ID debe contener solo mayúsculas y no exceder los 5 caracteres.",
+            }));
+    
+            if (isValidId) {
+                setSector((prevSector) => ({
+                    ...prevSector,
+                    [name]: value,
+                }));
+            }
+        }
     };
+    
 
     const handleAreaChange = (areaType) => {
         setSector((prevSector) => ({
@@ -42,8 +80,50 @@ const NewSector = () => {
         }));
     };
 
+    const resetForm = () => {
+        setSector({
+            "id_sector": "",
+            "image": null,
+            "name": "",
+            "state": ""
+        });
+
+        setFormState({
+            success: false,
+            message: "",
+            creatingSector: false,
+        });
+        setImageUploadKey((prevKey) => prevKey + 1);
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        //Verifico si todos los campos están completos 
+        const missingFields = [];
+            if (sector.name.trim() === "") {
+                missingFields.push("Nombre del servicio");
+            }
+            if (sector.id_sector.trim() === "") {
+                missingFields.push("ID del servicio");
+            }
+            if (sector.state.trim() === "") {
+                missingFields.push("Tipo de área");
+            }
+            if (sector.image === null) {
+                missingFields.push("Imagen");
+            }
+        
+            if (missingFields.length > 0) {
+        // Mostrar mensaje de error con los campos faltantes
+                setFormState({
+                    success: false,
+                    message: `Faltan completar los siguientes campos: ${missingFields.join(", ")}`,
+                    creatingSector: false,
+                });
+        return;
+    }
+
         try {
             // Proceder con la creación del sector
             await createSector(sector);
@@ -55,20 +135,9 @@ const NewSector = () => {
                 creatingSector: false,
             });
 
-            // Limpiar el formulario
-            setSector({
-                "id_sector": "",
-                "image": null,
-                "name": "",
-                "state": ""
-            });
-
             setTimeout(() => {
-                setFormState({
-                    ...formState,
-                    success: false,
-                });
-            }, 3000);
+                resetForm();
+            }, 2000);
 
         } catch (error) {
             // Si no se crea correctamente,
@@ -91,7 +160,7 @@ const NewSector = () => {
                                 <div className="mb-5">
                                     <label htmlFor="image" className="form-label">Tu imagen:</label>
                                         <div className="mb-3 text-center">
-                                            <ImageUpload setImageCallback={handleImageChange} />
+                                            <ImageUpload key={imageUploadKey} setImageCallback={handleImageChange} />
                                         </div>
                                 </div>
                             </div>
@@ -101,23 +170,29 @@ const NewSector = () => {
                                     <label htmlFor="nombre del servicio" className="form-label">Nombre del servicio:</label>
                                     <input
                                         type="text"
-                                        className="form-control"
+                                        className={`form-control ${validationName.name && "is-invalid"}`}
                                         name="name"
                                         value={sector.name}
                                         onChange={handleChange}
                                         placeholder="Ejemplo: Unidad de terapia intensiva pediátrica"
                                     />
+                                    {validationName.name && (
+                                        <div className="invalid-feedback">{validationName.name}</div>
+                                    )}
                                 </div>
                                 <div className="my-5">
                                     <label htmlFor="id del servicio" className="form-label">ID del servicio:</label>
                                     <input
                                         type="text"
-                                        className="form-control"
+                                        className={`form-control ${validationId.id && "is-invalid"}`}
                                         name="id_sector"
                                         value={sector.id_sector}
                                         onChange={handleChange}
                                         placeholder="Ejemplo: UTIP"
                                     />
+                                    {validationId.id && (
+                                        <div className="invalid-feedback">{validationId.id}</div>
+                                    )}
                                 </div>
 
                                 <div className="mb-3">
@@ -154,7 +229,7 @@ const NewSector = () => {
                             </div>
                         </div>
                         <div className="my-5 text-center">
-                            <button type="submit" className="btn btn-outline-dark" disabled={formState.creatingSector}>
+                        <button className="btn btn-outline-dark">
                                 Crear Sector
                             </button>
                         </div>
