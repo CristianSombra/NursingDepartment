@@ -11,7 +11,7 @@ module.exports = (sequelize) => {
               },
             image: {
                 type: DataTypes.STRING,
-                allowNull: true
+                allowNull: false
               },
             name: {
                 type: DataTypes.STRING,
@@ -19,7 +19,8 @@ module.exports = (sequelize) => {
               },
             dni: {
                 type: DataTypes.STRING,
-                allowNull: false
+                allowNull: false,
+                unique: true,
               }, 
             gender: {
                 type: DataTypes.ENUM("F", "M", "X"),
@@ -34,13 +35,12 @@ module.exports = (sequelize) => {
                 type: DataTypes.STRING,
                 allowNull: false,
                 unique: true,
-                validate: {
-                  isEmail: true,
-                },
+                isEmail: true
               },
             phone: {
                 type: DataTypes.STRING,
-                allowNull: false
+                allowNull: false,
+                unique: true,
               }, 
             address: {
                 type: DataTypes.STRING,
