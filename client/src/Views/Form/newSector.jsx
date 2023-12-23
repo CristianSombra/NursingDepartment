@@ -97,22 +97,22 @@ const NewSector = () => {
                             </div>
 
                             <div className="col-12 col-md-6">
-                                <div className="mb-5">
-                                    <label htmlFor="nombre del servicio" className="form-label">Nombre del servicio</label>
+                                <div className="mb-3">
+                                    <label htmlFor="nombre del servicio" className="form-label">Nombre del servicio:</label>
                                     <input
                                         type="text"
-                                        className="form-control"
+                                        className="form-control mt-3"
                                         name="name"
                                         value={sector.name}
                                         onChange={handleChange}
                                         placeholder="Ejemplo: Unidad de terapia intensiva pediátrica"
                                     />
                                 </div>
-                                <div className="mb-5">
-                                    <label htmlFor="id del servicio" className="form-label">ID del servicio</label>
+                                <div className="my-5">
+                                    <label htmlFor="id del servicio" className="form-label">ID del servicio:</label>
                                     <input
                                         type="text"
-                                        className="form-control"
+                                        className="form-control mt-3"
                                         name="id_sector"
                                         value={sector.id_sector}
                                         onChange={handleChange}
@@ -122,9 +122,9 @@ const NewSector = () => {
 
                                 <div className="mb-3">
                                     <label htmlFor="tipo de área" className="form-label">
-                                        Tipo de área
+                                        Tipo de área:
                                     </label>
-                                    <div className="form-check">
+                                    <div className="form-check mt-3">
                                         <input
                                             type="radio"
                                             className="form-check-input"
