@@ -56,7 +56,7 @@ return(
             </div>
             ))}
         </div>
-        <div className='row my-4 justify-content-center'>
+        <div className='row my-4 d-flex justify-content-center'>
             <div className='col-auto'>
             <button
                 type="button"
