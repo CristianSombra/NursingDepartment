@@ -3,7 +3,7 @@ import agents from '../../assets/personal.png';
 import sectors from '../../assets/servicios.png';
 import './Home.css'
 
-const  Home = () => {
+const Home = () => {
     
     return (
         <div className="container">

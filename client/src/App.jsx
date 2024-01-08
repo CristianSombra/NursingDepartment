@@ -1,6 +1,6 @@
 import React from "react";
 import { Routes, Route, useLocation } from 'react-router-dom';
-import { Landing, Home, Protocols, Agents, Sectors, NewAgent, NewSector } from './Views/index';
+import { Landing, Home, Protocols, Agents, Detail, Sectors, NewAgent, NewSector } from './Views/index';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import 'bootstrap-icons/font/bootstrap-icons.css';
@@ -24,6 +24,7 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/protocols" element={<Protocols />} />
           <Route path="/agents"  element={<Agents />} />
+          <Route path="/agents/:id"  element={<Detail />} />
           <Route path="/sectors"  element={<Sectors />} />
           <Route path="/formagent"  element={<NewAgent />} />
           <Route path="/formsector"  element={<NewSector />} />

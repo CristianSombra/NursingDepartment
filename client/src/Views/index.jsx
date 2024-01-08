@@ -3,6 +3,7 @@ import Home from './Home/Home';
 import Protocols from './Protocols/Protocols';
 import Agents from './Agents/Agents';
 import Sectors from './Sectors/Sectors';
+import Detail from './Detail/detail';
 import NewAgent from './Form/newAgent';
 import NewSector from './Form/newSector';
 
@@ -12,6 +13,7 @@ export {
     Protocols,
     Agents,
     Sectors,
+    Detail,
     NewAgent,
     NewSector
 }
