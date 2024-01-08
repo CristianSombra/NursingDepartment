@@ -12,6 +12,19 @@ getAllAgents: async (req, res) => {
     };
 },
 
+getAgentById: async (req, res) => {
+    const { id } = req.params;
+    try {
+        const agent = await agentsController.getAgentID(id);
+        if(!agent){
+            return res.status(404).json({error:"Agent not found"})
+        }
+        return res.status(200).json(agent);
+    } catch (error) {
+        res.status(500).json({error:"Error finding agent in DB"});
+    }
+},
+
 createAgent: async (req, res) => {
     const agentData = req.body.agentData;
     try {

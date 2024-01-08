@@ -1,4 +1,4 @@
-import { ERROR, GET_ALL_AGENTS, GET_ALL_SECTORS, CREATE_NEWAGENT, CREATE_NEWSECTOR } from "./actions";
+import { ERROR, GET_ALL_AGENTS,GET_AGENT_ID , GET_ALL_SECTORS, CREATE_NEWAGENT, CREATE_NEWSECTOR } from "./actions";
 
 const initialstate = {
     agents: [],
@@ -21,6 +21,12 @@ const rootReducer = (state = initialstate, action) => {
             return{
                 ...state,
                 agents: action.payload,
+            };
+        case GET_AGENT_ID:
+            return{
+                ...state,
+                agent: action.payload,
+                loading: false
             };
         case GET_ALL_SECTORS:
             return{

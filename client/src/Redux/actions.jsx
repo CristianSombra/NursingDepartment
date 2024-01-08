@@ -2,6 +2,7 @@ import axios from "axios";
 
 export const ERROR = 'ERROR';
 export const GET_ALL_AGENTS = 'GET_ALL_AGENTS';
+export const GET_AGENT_ID =  'GET_AGENT_ID';
 export const GET_ALL_SECTORS = 'GET_ALL_SECTORS';
 export const CREATE_NEWAGENT = 'CREATE_NEWAGENT'
 export const CREATE_NEWSECTOR = 'CREATE_NEWSECTOR';
@@ -22,6 +23,22 @@ export const allAgents = () => {
             dispatch({type:ERROR, payload:errorMessage})
         }
         return errorMessage;
+    };
+};
+
+export const getAgentId = (id) => {
+    return async function(dispatch) {
+        let errorMessage = '';
+        try {
+            console.log("Response from server:", id);
+            const res = await axios.get(`http://localhost:3001/agents/${id}`);
+            console.log("Response from server:", res.data);
+            dispatch({type: GET_AGENT_ID, payload: res.data});
+        } catch (error) {
+            errorMessage = 'Error al buscar el agente'
+            dispatch({type: ERROR, payload: errorMessage});
+        }
+        return errorMessage
     };
 };
 

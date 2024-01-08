@@ -12,6 +12,14 @@ const getAllAgents = async () => {
     }
 };
 
+const getAgentID = async (id) => {
+    const agent = await Agents.findByPk(id);
+    if(!agent) {
+        throw new Error("Agent not found")
+    }
+    return agent;
+};
+
 const createAgent = async (agentData) => {
     try {
         console.log(agentData);
@@ -41,5 +49,6 @@ const createAgent = async (agentData) => {
 
 module.exports = {
     getAllAgents,
+    getAgentID,
     createAgent
 };
