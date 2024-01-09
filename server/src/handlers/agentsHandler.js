@@ -25,6 +25,20 @@ getAgentById: async (req, res) => {
     }
 },
 
+getAgentByName: async (req, res) => {
+    const { name } = req.query;
+    try {
+        const agent = await agentsController.getAgentByName(name);
+        if (agent.length === 0){
+            return res.status(404).json({error:"Agent not found"});
+        }
+        return res.status(200).json(agent)
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({error:"Error finding agent in DB"})
+    }
+},
+
 createAgent: async (req, res) => {
     const agentData = req.body.agentData;
     try {

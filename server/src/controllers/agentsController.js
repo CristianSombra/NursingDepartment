@@ -1,4 +1,5 @@
 const { Agents, Sector } = require ('../db');
+const { Op } = require("sequelize");
 
 const getAllAgents = async () => {
     try {
@@ -20,9 +21,22 @@ const getAgentID = async (id) => {
     return agent;
 };
 
+const getAgentByName = async (name) => {
+    const agents = await Agents.findAll({
+        where:{
+            name:{
+                [Op.iLike]: `%${name}%`
+            },
+        },
+    });
+    if(agents.length === 0) {
+        throw new Error("Agent not found")
+    }
+    return agents;
+}
+
 const createAgent = async (agentData) => {
     try {
-        console.log(agentData);
         const newAgent = await Agents.create({
             ...agentData,
             createdInDb: true
@@ -50,5 +64,6 @@ const createAgent = async (agentData) => {
 module.exports = {
     getAllAgents,
     getAgentID,
+    getAgentByName,
     createAgent
 };
