@@ -9,8 +9,8 @@ const CardAgents = (props) => {
     return(
         <div className="container">
             <div className="row my-3 justify-content-center">
-                <div className="col">
-                    <div className="card">
+                <div className="col-12 col-md-9">
+                    <div className="card card-custom">
                         <div className="imageContainer">
                             <img className="card-img-top img-fluid rounded" src={image} alt="agente"/>    
                         </div>
