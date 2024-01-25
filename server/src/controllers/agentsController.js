@@ -14,7 +14,13 @@ const getAllAgents = async () => {
 };
 
 const getAgentID = async (id) => {
-    const agent = await Agents.findByPk(id);
+    const agent = await Agents.findByPk(id, {
+        include: [{
+            model: Sector,
+            as: 'Sectors',
+        }],
+    });
+    
     if(!agent) {
         throw new Error("Agent not found")
     }

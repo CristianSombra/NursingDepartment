@@ -1,4 +1,6 @@
-import React from "react";
+import React, {useEffect} from "react";
+import { useDispatch } from "react-redux";
+import { allAgents, getAllSectors } from "./Redux/actions";
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { Landing, Home, Protocols, Agents, Detail, Sectors, NewAgent, NewSector } from './Views/index';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -9,7 +11,14 @@ import Footer from "./Components/footer/footer";
 
 
 function App() {
+  const dispatch = useDispatch();
   const location = useLocation();
+
+  useEffect(() => {
+    // Dispatch actions to load initial data
+    dispatch(allAgents());
+    dispatch(getAllSectors());
+  }, [dispatch]);
 
   React.useEffect(() => {
     window.scroll(0,0);

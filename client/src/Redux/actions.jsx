@@ -30,9 +30,7 @@ export const getAgentId = (id) => {
     return async function(dispatch) {
         let errorMessage = '';
         try {
-            console.log("Response from server:", id);
             const res = await axios.get(`http://localhost:3001/agents/${id}`);
-            console.log("Response from server:", res.data);
             dispatch({type: GET_AGENT_ID, payload: res.data});
         } catch (error) {
             errorMessage = 'Error al buscar el agente'
